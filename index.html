@@ -72,7 +72,7 @@
                 src="https://avatars.githubusercontent.com/u/68082746?s=400&u=91d9f39e5c3715d8b3ef4bce134a346bbbe95150&v=4"
                 alt="pfp" class="profile-img mx-auto mb-4 rounded-full">
             <h1 class="text-2xl font-bold text-center">jd-apprentice</h1>
-            <p class="text-center">DevOps - SysOps</p>
+            <p class="text-center">🧰 infra | 🏴‍☠️ Security | 💻 tech | 📚 linux | 💖 anime</p>
         </section>
 
         <section class="lg:flex lg:justify-center">
@@ -106,6 +106,11 @@
 
             <button @click="showVideos = true" class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded">
                 videos
+            </button>
+
+            <button id="audioPlayerButton"
+                class="cursor-pointer mt-4 mx-2 px-4 py-2 bg-red-500 text-white rounded-xl border-2 border-black">
+                play 🎵
             </button>
         </section>
 
@@ -149,6 +154,10 @@
             </div>
         </section>
     </main>
+
+    <audio loop controls preload="auto" id="audioPlayer" style="display: none;">
+        <source src="/assets/song.mp3" type="audio/mpeg">
+    </audio>
 </body>
 
 </html>
