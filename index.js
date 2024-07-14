@@ -1,6 +1,10 @@
 // ----------------- Variables ----------------- //
 const aboutMeText = document.querySelector('#about-me');
 const audioPlayerButton = document.querySelector('#audioPlayerButton');
+
+/**
+ * @type {HTMLAudioElement}
+ */
 const audioPlayer = document.querySelector('#audioPlayer');
 
 const defaultText = `Hihi! Jonathan here`;
@@ -8,14 +12,24 @@ const aboutMeUrl = 'https://raw.githubusercontent.com/jd-apprentice/jd-apprentic
 let isPlaying = false
 
 // ----------------- Functions ----------------- //
+/**
+ * @param {string} text
+ */
 function addIcon(text) {
     return text + ' 🎵';
 };
 
+/**
+ * @param {string} style - The color of the button
+ */
 function returnStyle(style) {
     return `cursor-pointer mt-4 mx-2 px-4 py-2 bg-${style}-500 text-white rounded-xl border-2 border-black`;
 };
 
+/**
+ * @description Obtains the text from the given url
+ * @param {string} url
+ */
 async function fetchText(url) {
     const response = await fetch(url);
     const text = await response.text();

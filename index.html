@@ -57,6 +57,14 @@
             'Scripting',
             'Containers'
         ],
+        softSkills: [
+            'Problem Solving',
+            'Teamwork',
+            'Communication',
+            'Client Management',
+            'Critical Thinking',
+            'Conflict Resolution'
+        ],
         videos: [
             {
                 title: 'Hack The Box - Solving BANK',
@@ -120,7 +128,7 @@
         </section>
 
         <section x-show="showAbout" @click.away="showAbout = false" class="mt-4">
-            <h2 class="text-xl font-bold">bio</h2>
+            <h2 class="text-xl font-bold">Bio</h2>
             <p id="about-me" class="text-gray-700"></p>
         </section>
 
@@ -130,6 +138,14 @@
             <h2 class="text-xl font-bold">Technical Skills</h2>
             <div class="flex flex-wrap mt-3">
                 <template x-for="(skill, index) in skills" :key="skill">
+                    <span
+                        :class="['bg-' + colorClasses[index % colorClasses.length], 'text-white', 'py-1', 'px-2', 'mb-2', 'mr-2']"
+                        x-text="skill"></span>
+                </template>
+            </div>
+            <h2 class="text-xl font-bold">Soft Skills</h2>
+            <div class="flex flex-wrap mt-3">
+                <template x-for="(skill, index) in softSkills" :key="skill">
                     <span
                         :class="['bg-' + colorClasses[index % colorClasses.length], 'text-white', 'py-1', 'px-2', 'mb-2', 'mr-2']"
                         x-text="skill"></span>
