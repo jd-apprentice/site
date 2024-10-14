@@ -50,7 +50,6 @@ audioPlayerButton.addEventListener('click', () => {
     audioPlayerButton.textContent = addIcon('play');
     audioPlayerButton.className = returnStyle('red');
     isPlaying = !isPlaying;
-    return;
 });
 
 // ----------------- Main ----------------- //

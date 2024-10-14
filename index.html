@@ -1,48 +1,31 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and
         interesting things either for fun and professionally. I am currently working with devops culture.
         Homelabs, linux, finance, chess and anime. 🎮📈" />
-        <meta
-            name="keywords"
-            content="jd-apprentice, jonathan dyallo, devops, sre, homelab, pentesting"
-        />
-        <meta name="author" content="jd-apprentice" />
-        <meta
-            property="og:title"
-            content="jd-apprentice - homelab enthusiast"
-        />
-        <meta
-            property="og:description"
-            content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and
+    <meta name="keywords" content="jd-apprentice, jonathan dyallo, devops, sre, homelab, pentesting" />
+    <meta name="author" content="jd-apprentice" />
+    <meta property="og:title" content="jd-apprentice - homelab enthusiast" />
+    <meta property="og:description" content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and
             interesting things either for fun and professionally. I am currently working with devops culture.
-            Homelabs, linux, finance, chess and anime. 🎮📈"
-        />
-        <meta
-            property="og:image"
-            content="https://avatars.githubusercontent.com/u/68082746?s=400&u=91d9f39e5c3715d8b3ef4bce134a346bbbe95150&v=4"
-        />
-        <meta property="og:url" content="https://jonathan.com.ar/" />
-        <meta property="og:type" content="website" />
-        <title>jd-apprentice - homelab enthusiast</title>
-        <script defer src="index.js"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"
-            defer
-        ></script>
-        <link
-            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-            rel="stylesheet"
-        />
-    </head>
+            Homelabs, linux, finance, chess and anime. 🎮📈" />
+    <meta property="og:image"
+        content="https://avatars.githubusercontent.com/u/68082746?s=400&u=91d9f39e5c3715d8b3ef4bce134a346bbbe95150&v=4" />
+    <meta property="og:url" content="https://jonathan.com.ar/" />
+    <meta property="og:type" content="website" />
+    <title>jd-apprentice - homelab enthusiast</title>
+    <script defer src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
 
-    <!-- Data -->
+<!-- Data -->
 
-    <body
-        x-data="{
+<body x-data="{
         showAbout: false,
         showSkills: false,
         showProjects: false,
@@ -91,197 +74,127 @@
         ],
         videos: [
             {
-                title: 'Hack The Box - Solving BANK',
+                title: 'Hack The Box - Solving BANK [ES]',
                 url: 'https://youtu.be/zxmCYEddfeU?si=qxtDAdr7eSE8m3XJ&t=4479'
             },
             {
-                title: 'What is Git and Github?',
+                title: 'What is Git and Github? [EN]',
                 url: 'https://www.youtube.com/watch?v=yusKpPVGLWg'
+            },
+            {
+                title: 'A talk about open source [ES]',
+                url: 'https://www.youtube.com/watch?v=B9WX3VC9TG4'
             }
         ]
-    }"
-        class="min-h-screen flex items-center justify-center bg-gray-200"
-    >
-        <!-- Container -->
+    }" class="min-h-screen flex items-center justify-center bg-gray-200">
+    <!-- Container -->
 
-        <main class="container bg-white p-8 rounded shadow-md">
-            <section>
-                <img
-                    width="300"
-                    height="300"
-                    src="https://avatars.githubusercontent.com/u/68082746?s=400&u=91d9f39e5c3715d8b3ef4bce134a346bbbe95150&v=4"
-                    alt="pfp"
-                    class="profile-img mx-auto mb-4 rounded-full"
-                />
-                <h1 class="text-2xl font-bold text-center">jd-apprentice</h1>
-                <p class="text-center">
-                    🧰 infra | 🏴‍☠️ Security | 💻 tech | 📚 linux | 💖 anime
-                </p>
-            </section>
+    <main class="container bg-white p-8 rounded shadow-md">
+        <section>
+            <img width="300" height="300"
+                src="https://avatars.githubusercontent.com/u/68082746?s=400&u=91d9f39e5c3715d8b3ef4bce134a346bbbe95150&v=4"
+                alt="pfp" class="profile-img mx-auto mb-4 rounded-full" />
+            <h1 class="text-2xl font-bold text-center">jd-apprentice</h1>
+            <p class="text-center">
+                🧰 infra | 🏴‍☠️ Security | 💻 tech | 📚 linux | 💖 anime
+            </p>
+        </section>
 
-            <!-- Buttons -->
+        <!-- Buttons -->
 
-            <section class="lg:flex lg:justify-center">
-                <button
-                    @click="showAbout = true"
-                    class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded"
-                >
-                    about me
-                </button>
+        <section class="lg:flex lg:justify-center">
+            <button @click="showAbout = true" class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded">
+                about me
+            </button>
 
-                <button
-                    class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded"
-                >
-                    <a
-                        rel="noopener"
-                        target="_blank"
-                        href="https://blog.jonathan.com.ar/"
-                        class="btn btn-secondary mt-4"
-                        >blog</a
-                    >
-                </button>
+            <button class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded">
+                <a rel="noopener" target="_blank" href="https://blog.jonathan.com.ar/"
+                    class="btn btn-secondary mt-4">blog</a>
+            </button>
 
-                <button
-                    class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded"
-                >
-                    <a
-                        rel="noopener"
-                        target="_blank"
-                        href="https://links.jonathan.com.ar"
-                        class="btn btn-secondary mt-4"
-                        >contact</a
-                    >
-                </button>
+            <button class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded">
+                <a rel="noopener" target="_blank" href="https://links.jonathan.com.ar"
+                    class="btn btn-secondary mt-4">contact</a>
+            </button>
 
-                <button
-                    @click="showSkills = true"
-                    class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded"
-                >
-                    skills
-                </button>
+            <button @click="showSkills = true" class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded">
+                skills
+            </button>
 
-                <button
-                    @click="showProjects = true"
-                    class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded"
-                >
-                    projects
-                </button>
+            <button @click="showProjects = true" class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded">
+                projects
+            </button>
 
-                <button
-                    class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded"
-                >
-                    <a
-                        rel="noopener"
-                        target="_blank"
-                        href="./assets/Resume.pdf"
-                        class="btn btn-secondary mt-4"
-                        >resume</a
-                    >
-                </button>
+            <button class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded">
+                <a rel="noopener" target="_blank" href="./assets/Resume.pdf" class="btn btn-secondary mt-4">resume</a>
+            </button>
 
-                <button
-                    @click="showVideos = true"
-                    class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded"
-                >
-                    videos
-                </button>
+            <button @click="showVideos = true" class="mt-4 mx-2 px-4 py-2 bg-gray-900 text-white rounded">
+                videos
+            </button>
 
-                <button
-                    id="audioPlayerButton"
-                    class="cursor-pointer mt-4 mx-2 px-4 py-2 bg-red-500 text-white rounded-xl border-2 border-black"
-                >
-                    play 🎵
-                </button>
-            </section>
+            <button id="audioPlayerButton"
+                class="cursor-pointer mt-4 mx-2 px-4 py-2 bg-red-500 text-white rounded-xl border-2 border-black">
+                play 🎵
+            </button>
+        </section>
 
-            <section
-                x-show="showAbout"
-                @click.away="showAbout = false"
-                class="mt-4"
-            >
-                <h2 class="text-xl font-bold">Bio</h2>
-                <p id="about-me" class="text-gray-700"></p>
-            </section>
+        <section x-show="showAbout" @click.away="showAbout = false" class="mt-4">
+            <h2 class="text-xl font-bold">Bio</h2>
+            <p id="about-me" class="text-gray-700"></p>
+        </section>
 
-            <!-- Templates -->
+        <!-- Templates -->
 
-            <section
-                x-show="showSkills"
-                @click.away="showSkills = false"
-                class="mt-4"
-            >
-                <h2 class="text-xl font-bold">Technical Skills</h2>
-                <div class="flex flex-wrap mt-3">
-                    <template x-for="(skill, index) in skills" :key="skill">
-                        <span
-                            :class="['bg-' + colorClasses[index % colorClasses.length], 'text-white', 'py-1', 'px-2', 'mb-2', 'mr-2']"
-                            x-text="skill"
-                        ></span>
-                    </template>
-                </div>
-                <h2 class="text-xl font-bold">Soft Skills</h2>
-                <div class="flex flex-wrap mt-3">
-                    <template x-for="(skill, index) in softSkills" :key="skill">
-                        <span
-                            :class="['bg-' + colorClasses[index % colorClasses.length], 'text-white', 'py-1', 'px-2', 'mb-2', 'mr-2']"
-                            x-text="skill"
-                        ></span>
-                    </template>
-                </div>
-            </section>
+        <section x-show="showSkills" @click.away="showSkills = false" class="mt-4">
+            <h2 class="text-xl font-bold">Technical Skills</h2>
+            <div class="flex flex-wrap mt-3">
+                <template x-for="(skill, index) in skills" :key="skill">
+                    <span
+                        :class="['bg-' + colorClasses[index % colorClasses.length], 'text-white', 'py-1', 'px-2', 'mb-2', 'mr-2']"
+                        x-text="skill"></span>
+                </template>
+            </div>
+            <h2 class="text-xl font-bold">Soft Skills</h2>
+            <div class="flex flex-wrap mt-3">
+                <template x-for="(skill, index) in softSkills" :key="skill">
+                    <span
+                        :class="['bg-' + colorClasses[index % colorClasses.length], 'text-white', 'py-1', 'px-2', 'mb-2', 'mr-2']"
+                        x-text="skill"></span>
+                </template>
+            </div>
+        </section>
 
-            <section
-                x-show="showProjects"
-                @click.away="showProjects = false"
-                class="mt-4"
-            >
-                <h2 class="text-xl font-bold">Projects</h2>
-                <div class="flex flex-wrap mt-3">
-                    <template
-                        x-for="(project, index) in projects"
-                        :key="project"
-                    >
-                        <a
-                            target="_blank"
-                            :href="['https://github.com/jd-apprentice/' + project]"
-                            :class="['bg-' + colorClasses[index % colorClasses.length], 'text-white', 'py-1', 'px-2', 'mb-2', 'mr-2']"
-                            x-text="project"
-                        >
-                        </a>
-                    </template>
-                </div>
-            </section>
+        <section x-show="showProjects" @click.away="showProjects = false" class="mt-4">
+            <h2 class="text-xl font-bold">Projects</h2>
+            <div class="flex flex-wrap mt-3">
+                <template x-for="(project, index) in projects" :key="project">
+                    <a target="_blank" :href="['https://github.com/jd-apprentice/' + project]"
+                        :class="['bg-' + colorClasses[index % colorClasses.length], 'text-white', 'py-1', 'px-2', 'mb-2', 'mr-2']"
+                        x-text="project">
+                    </a>
+                </template>
+            </div>
+        </section>
 
-            <section
-                x-show="showVideos"
-                @click.away="showVideos = false"
-                class="mt-4"
-            >
-                <h2 class="text-xl font-bold">Videos</h2>
-                <div class="flex flex-wrap mt-3">
-                    <template x-for="(video, index) in videos" :key="video">
-                        <a
-                            target="_blank"
-                            :href="video.url"
-                            :class="['bg-' + colorClasses[index % colorClasses.length], 'text-white', 'py-1', 'px-2', 'mb-2', 'mr-2']"
-                            x-text="video.title"
-                        >
-                        </a>
-                    </template>
-                </div>
-            </section>
-        </main>
+        <section x-show="showVideos" @click.away="showVideos = false" class="mt-4">
+            <h2 class="text-xl font-bold">Videos</h2>
+            <div class="flex flex-wrap mt-3">
+                <template x-for="(video, index) in videos" :key="video">
+                    <a target="_blank" :href="video.url"
+                        :class="['bg-' + colorClasses[index % colorClasses.length], 'text-white', 'py-1', 'px-2', 'mb-2', 'mr-2']"
+                        x-text="video.title">
+                    </a>
+                </template>
+            </div>
+        </section>
+    </main>
 
-        <!-- Music -->
+    <!-- Music -->
 
-        <audio
-            loop
-            controls
-            preload="auto"
-            id="audioPlayer"
-            style="display: none"
-        >
-            <source src="/assets/song.mp3" type="audio/mpeg" />
-        </audio>
-    </body>
+    <audio loop controls preload="auto" id="audioPlayer" style="display: none">
+        <source src="/assets/song.mp3" type="audio/mpeg" />
+    </audio>
+</body>
+
 </html>
