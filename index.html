@@ -4,26 +4,24 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and
-        interesting things either for fun and professionally. I am currently working with devops culture.
-        Homelabs, linux, finance, chess and anime. 🎮📈" />
+    <meta name="description"
+        content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and interesting things either for fun and professionally. I am currently working with devops culture. Homelabs, linux, finance, chess and anime. 🎮📈" />
     <meta name="keywords" content="jd-apprentice, jonathan dyallo, devops, sre, homelab, pentesting" />
     <meta name="author" content="jd-apprentice" />
     <meta property="og:title" content="jd-apprentice - homelab enthusiast" />
-    <meta property="og:description" content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and
-            interesting things either for fun and professionally. I am currently working with devops culture.
-            Homelabs, linux, finance, chess and anime. 🎮📈" />
+    <meta property="og:description"
+        content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and interesting things either for fun and professionally. I am currently working with devops culture. Homelabs, linux, finance, chess and anime. 🎮📈" />
     <meta property="og:image"
         content="https://avatars.githubusercontent.com/u/68082746?s=400&u=91d9f39e5c3715d8b3ef4bce134a346bbbe95150&v=4" />
     <meta property="og:url" content="https://jonathan.com.ar/" />
     <meta property="og:type" content="website" />
     <title>jd-apprentice - homelab enthusiast</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script defer src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
     <style>
         body {
             background-color: #111827;
@@ -31,10 +29,9 @@
         }
 
         .container {
-            background-color: #1f2937;
+            background: linear-gradient(135deg, #1f2937, #374151);
         }
 
-        button,
         .btn {
             background: linear-gradient(135deg, #1f2937, #374151);
             color: #e5e7eb;
@@ -45,13 +42,11 @@
             transition: all 0.3s ease;
         }
 
-        button:hover,
         .btn:hover {
             background: linear-gradient(135deg, #374151, #1f2937);
             color: #60a5fa;
             transform: translateY(-1px);
         }
-
 
         #audioPlayerButton {
             background: linear-gradient(135deg, #1f2937, #374151);
@@ -60,11 +55,6 @@
             padding: 0.75rem 1.5rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        #audioPlayerButton:hover {
-            background: linear-gradient(135deg, #374151, #1f2937);
-            transform: translateY(-1px);
         }
 
         #audioPlayerButton span {
@@ -76,10 +66,8 @@
 
         #audioPlayerButton span:hover {
             color: #60a5fa;
-            /* soft blue glow */
             transform: scale(1.15);
         }
-
 
         .profile-img {
             border: 4px solid #374151;
@@ -88,136 +76,92 @@
 </head>
 
 <body x-data="{
-        showAbout: false,
-        showSkills: false,
-        showProjects: false,
-        showVideos: false,
-        projects: [
-            'dbn-tools',
-            'docker-armhf',
-            'easy-static',
-            'dotfiles',
-            'jd-alpine',
-            'jd-bun',
-            'jd-server',
-            'jd-infra',
-            'jd-workflows',
-            'mkdocs-template',
-            'linux-bot',
-            'hack-the-box',
-            'libritos',
-            'waifuland-api',
-            'telelog'
-        ],
-        colorClasses: ['green-600', 'blue-600', 'purple-600', 'yellow-600', 'indigo-600', 'red-600', 'gray-600'],
-        skills: [
-            'ARM64',
-            'Linux',
-            'Self Hosting',
-            'System Design',
-            'Software Development',
-            'Pentesting',
-            'SDLC',
-            'Monitoring',
-            'Networking',
-            'Automation',
-            'Cloudflare',
-            'DevOps',
-            'SRE',
-            'Scripting',
-            'Containers',
-            'Orchestration',
-        ],
-        softSkills: [
-            'Problem Solving',
-            'Teamwork',
-            'Communication',
-            'Mentoring',
-            'Client Management',
-            'Critical Thinking',
-            'Conflict Resolution',
-            'Leadership'
-        ],
-        videos: [
-            {
-                title: 'Hack The Box - Solving BANK [ES]',
-                url: 'https://youtu.be/zxmCYEddfeU?si=qxtDAdr7eSE8m3XJ&t=4479'
-            },
-            {
-                title: 'What is Git and Github? [EN]',
-                url: 'https://www.youtube.com/watch?v=yusKpPVGLWg'
-            },
-            {
-                title: 'A talk about open source [ES]',
-                url: 'https://www.youtube.com/watch?v=B9WX3VC9TG4'
-            }
-        ]
-    }" class="min-h-screen flex items-center justify-center">
+      showAbout: true,
+      showSkills: false,
+      showProjects: false,
+      showVideos: false,
+      projects: [
+        'dbn-tools', 'docker-armhf', 'easy-static', 'dotfiles', 'jd-alpine', 'jd-bun',
+        'jd-server', 'jd-infra', 'jd-workflows', 'mkdocs-template', 'linux-bot',
+        'hack-the-box', 'libritos', 'waifuland-api', 'telelog'
+      ],
+      colorClasses: ['green-600', 'blue-600', 'purple-600', 'yellow-600', 'indigo-600', 'red-600', 'gray-600'],
+      skills: [
+        'ARM64', 'Linux', 'Self Hosting', 'System Design', 'Software Development', 'Pentesting',
+        'SDLC', 'Monitoring', 'Networking', 'Automation', 'Cloudflare', 'DevOps', 'SRE',
+        'Scripting', 'Containers', 'Orchestration'
+      ],
+      softSkills: [
+        'Problem Solving', 'Teamwork', 'Communication', 'Mentoring', 'Client Management',
+        'Critical Thinking', 'Conflict Resolution', 'Leadership'
+      ],
+      videos: [
+        { title: 'Hack The Box - Solving BANK [ES]', url: 'https://youtu.be/zxmCYEddfeU?si=qxtDAdr7eSE8m3XJ&t=4479' },
+        { title: 'What is Git and Github? [EN]', url: 'https://www.youtube.com/watch?v=yusKpPVGLWg' },
+        { title: 'A talk about open source [ES]', url: 'https://www.youtube.com/watch?v=B9WX3VC9TG4' }
+      ]
+    }" class="min-h-screen flex items-center justify-center p-4">
 
-    <main class="container p-8 rounded-lg shadow-xl max-w-4xl">
-        <div id="audioPlayerButton"
-            class="w-64 mx-auto mt-4 py-2 px-4 rounded-xl flex justify-between items-center shadow-md transition-transform bg-gradient-to-br from-gray-800 to-gray-700 border border-gray-600 hover:from-gray-700 hover:to-gray-800 transform hover:-translate-y-1">
-            <span id="prevButton"
-                class="text-gray-300 text-lg hover:text-blue-400 transition-transform transform hover:scale-110">
-                <i class="fas fa-backward"></i>
-            </span>
-            <span id="playPauseLabel"
-                class="text-gray-300 text-lg hover:text-blue-400 transition-transform transform hover:scale-110">
-                <i class="fas fa-play"></i>
-            </span>
-            <span id="nextButton"
-                class="text-gray-300 text-lg hover:text-blue-400 transition-transform transform hover:scale-110">
-                <i class="fas fa-forward"></i>
-            </span>
+    <main class="container p-8 rounded-lg shadow-xl max-w-4xl w-full">
+        <div class="flex flex-col lg:flex-row items-center lg:items-start mb-8">
+            <div class="flex flex-col items-center lg:items-start lg:mr-8">
+                <img width="150" height="150"
+                    src="https://avatars.githubusercontent.com/u/68082746?s=400&u=91d9f39e5c3715d8b3ef4bce134a346bbbe95150&v=4"
+                    alt="pfp" class="profile-img rounded-full mb-4" />
+                <div class="text-center lg:text-left">
+                    <h1 class="text-3xl font-bold mb-2">jd-apprentice</h1>
+                    <p class="text-gray-300 text-lg">
+                        <span class="mr-2">🧰 infra</span> | <span class="mr-2">🏴‍☠️ Security</span> | <span
+                            class="mr-2">💻 tech</span>
+                    </p>
+                    <p class="text-gray-300 text-lg">
+                        <span class="mr-2">📚 linux</span> | <span class="mr-2">💖 anime</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center lg:items-end flex-grow">
+                <section class="flex flex-wrap justify-center lg:justify-end gap-4 mt-4 lg:mt-0 mb-4">
+                    <button @click="showAbout = true" class="btn">about me</button>
+                    <button class="btn"><a rel="noopener" target="_blank"
+                            href="https://blog.jonathan.com.ar/">blog</a></button>
+                    <button class="btn"><a rel="noopener" target="_blank"
+                            href="https://links.jonathan.com.ar">contact</a></button>
+                    <button @click="showSkills = true" class="btn">skills</button>
+                    <button @click="showProjects = true" class="btn">projects</button>
+                    <button class="btn"><a rel="noopener" target="_blank" href="./assets/Resume.pdf">resume</a></button>
+                    <button @click="showVideos = true" class="btn">videos</button>
+                </section>
+            </div>
         </div>
 
-        <section class="p-5">
-            <img width="300" height="300"
-                src="https://avatars.githubusercontent.com/u/68082746?s=400&u=91d9f39e5c3715d8b3ef4bce134a346bbbe95150&v=4"
-                alt="pfp" class="profile-img mx-auto mb-4 rounded-full" />
-            <h1 class="text-2xl font-bold text-center mb-2">jd-apprentice</h1>
-            <p class="text-center text-gray-300">
-                🧰 infra | 🏴‍☠️ Security | 💻 tech | 📚 linux | 💖 anime
-            </p>
-        </section>
+        <!-- Audio Player -->
+        <div class="flex flex-col md:flex-row md:space-x-6 items-start justify-between mb-8">
+            <div id="audioPlayerButton" @click.stop
+                class="w-64 py-2 px-4 rounded-xl flex justify-between items-center shadow-md transition-transform bg-gradient-to-br from-gray-800 to-gray-700 border border-gray-600 hover:from-gray-700 hover:to-gray-800 transform hover:-translate-y-1 mb-4 md:mb-0">
+                <span id="prevButton"
+                    class="text-gray-300 text-lg hover:text-blue-400 hover:scale-110 cursor-pointer"><i
+                        class="fas fa-backward"></i></span>
+                <span id="playPauseLabel"
+                    class="text-gray-300 text-lg hover:text-blue-400 hover:scale-110 cursor-pointer"><i
+                        class="fas fa-play"></i></span>
+                <span id="nextButton"
+                    class="text-gray-300 text-lg hover:text-blue-400 hover:scale-110 cursor-pointer"><i
+                        class="fas fa-forward"></i></span>
+            </div>
+        </div>
 
-        <section class="lg:flex lg:justify-center lg:flex-wrap">
-            <button @click="showAbout = true" class="mt-4 mx-2 px-4 py-2 text-gray-200 rounded hover:text-white">
-                about me
-            </button>
-
-            <button class="mt-4 mx-2 px-4 py-2 text-gray-200 rounded hover:text-white">
-                <a rel="noopener" target="_blank" href="https://blog.jonathan.com.ar/">blog</a>
-            </button>
-
-            <button class="mt-4 mx-2 px-4 py-2 text-gray-200 rounded hover:text-white">
-                <a rel="noopener" target="_blank" href="https://links.jonathan.com.ar">contact</a>
-            </button>
-
-            <button @click="showSkills = true" class="mt-4 mx-2 px-4 py-2 text-gray-200 rounded hover:text-white">
-                skills
-            </button>
-
-            <button @click="showProjects = true" class="mt-4 mx-2 px-4 py-2 text-gray-200 rounded hover:text-white">
-                projects
-            </button>
-
-            <button class="mt-4 mx-2 px-4 py-2 text-gray-200 rounded hover:text-white">
-                <a rel="noopener" target="_blank" href="./assets/Resume.pdf">resume</a>
-            </button>
-
-            <button @click="showVideos = true" class="mt-4 mx-2 px-4 py-2 text-gray-200 rounded hover:text-white">
-                videos
-            </button>
-        </section>
-
-        <section x-show="showAbout" @click.away="showAbout = false" class="mt-4">
-            <h2 class="text-xl font-bold text-gray-200">Bio</h2>
+        <!-- About Me Section -->
+        <section x-show="showAbout" @click.away="showAbout = false" class="p-4 rounded-lg w-full"
+            style="background: linear-gradient(135deg, #1f2937, #374151);">
+            <h2 class="text-xl font-bold text-gray-200 mb-2">Bio</h2>
             <p id="about-me" class="text-gray-300"></p>
         </section>
 
-        <section x-show="showSkills" @click.away="showSkills = false" class="mt-4">
-            <h2 class="text-xl font-bold text-gray-200">Technical Skills</h2>
+        <!-- Skills Section -->
+        <section x-show="showSkills" @click.away="showSkills = false" class="mt-4 p-4 rounded-lg"
+            style="background: linear-gradient(135deg, #1f2937, #374151);">
+            <h2 class="text-xl font-bold text-gray-200 mb-2">Technical Skills</h2>
             <div class="flex flex-wrap mt-3">
                 <template x-for="(skill, index) in skills" :key="skill">
                     <span
@@ -225,7 +169,7 @@
                         x-text="skill"></span>
                 </template>
             </div>
-            <h2 class="text-xl font-bold text-gray-200 mt-4">Soft Skills</h2>
+            <h2 class="text-xl font-bold text-gray-200 mt-4 mb-2">Soft Skills</h2>
             <div class="flex flex-wrap mt-3">
                 <template x-for="(skill, index) in softSkills" :key="skill">
                     <span
@@ -235,26 +179,28 @@
             </div>
         </section>
 
-        <section x-show="showProjects" @click.away="showProjects = false" class="mt-4">
-            <h2 class="text-xl font-bold text-gray-200">Projects</h2>
+        <!-- Projects Section -->
+        <section x-show="showProjects" @click.away="showProjects = false" class="mt-4 p-4 rounded-lg"
+            style="background: linear-gradient(135deg, #1f2937, #374151);">
+            <h2 class="text-xl font-bold text-gray-200 mb-2">Projects</h2>
             <div class="flex flex-wrap mt-3">
                 <template x-for="(project, index) in projects" :key="project">
                     <a target="_blank" :href="['https://github.com/jd-apprentice/' + project]"
                         :class="['bg-' + colorClasses[index % colorClasses.length], 'text-gray-200', 'py-1', 'px-2', 'mb-2', 'mr-2', 'rounded', 'hover:opacity-90']"
-                        x-text="project">
-                    </a>
+                        x-text="project"></a>
                 </template>
             </div>
         </section>
 
-        <section x-show="showVideos" @click.away="showVideos = false" class="mt-4">
-            <h2 class="text-xl font-bold text-gray-200">Videos</h2>
+        <!-- Videos Section -->
+        <section x-show="showVideos" @click.away="showVideos = false" class="mt-4 p-4 rounded-lg"
+            style="background: linear-gradient(135deg, #1f2937, #374151);">
+            <h2 class="text-xl font-bold text-gray-200 mb-2">Videos</h2>
             <div class="flex flex-wrap mt-3">
                 <template x-for="(video, index) in videos" :key="video">
                     <a target="_blank" :href="video.url"
                         :class="['bg-' + colorClasses[index % colorClasses.length], 'text-gray-200', 'py-1', 'px-2', 'mb-2', 'mr-2', 'rounded', 'hover:opacity-90']"
-                        x-text="video.title">
-                    </a>
+                        x-text="video.title"></a>
                 </template>
             </div>
         </section>
