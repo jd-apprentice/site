@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and interesting things either for fun and professionally." />
+        content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and interesting things either for fun and professionally. I am currently working with devops culture. Homelabs, linux, finance, chess and anime. 🎮📈" />
     <meta name="keywords" content="jd-apprentice, jonathan dyallo, devops, sre, homelab, pentesting" />
     <meta name="author" content="jd-apprentice" />
     <meta property="og:title" content="jd-apprentice - homelab enthusiast" />
     <meta property="og:description"
-        content="From La Plata, Argentina. DevOps, homelab, pentesting, automation, finance and anime." />
+        content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and interesting things either for fun and professionally. I am currently working with devops culture. Homelabs, linux, finance, chess and anime. 🎮📈" />
     <meta property="og:image"
         content="https://avatars.githubusercontent.com/u/68082746?s=400&u=91d9f39e5c3715d8b3ef4bce134a346bbbe95150&v=4" />
     <meta property="og:url" content="https://jonathan.com.ar/" />
@@ -31,35 +31,20 @@
         }
 
         body.music-playing {
-            background: linear-gradient(-45deg, #1f2937, #374151, #1f2937, #374151);
-            background-size: 400% 400%;
-            animation: backgroundWave 10s ease infinite, colorPulse 2s ease-in-out infinite;
-            color: #e5e7eb;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A, #4CAF50);
+            /* Adjusted colors to match container */
+            background-size: 200% 100%;
+            animation: wave 30s linear infinite;
+            /* Slower animation */
         }
 
-        @keyframes backgroundWave {
+        @keyframes wave {
             0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
+                background-position: 0% 0%;
             }
 
             100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes colorPulse {
-
-            0%,
-            100% {
-                color: #e5e7eb;
-            }
-
-            50% {
-                color: #9ca3af;
+                background-position: 100% 0%;
             }
         }
 
@@ -108,6 +93,7 @@
             border: 4px solid #374151;
         }
 
+        /* Fullscreen canvas for audio visualizer as background */
         #audioVisualizer {
             position: fixed;
             top: 0;
@@ -116,7 +102,8 @@
             height: 100vh;
             z-index: -1;
             pointer-events: none;
-            background-color: transparent;
+            background-color: #111827;
+            /* fallback */
         }
     </style>
 </head>
@@ -126,10 +113,21 @@
       showSkills: false,
       showProjects: false,
       showVideos: false,
-      projects: ['dbn-tools', 'docker-armhf', 'easy-static', 'dotfiles', 'jd-alpine', 'jd-bun', 'jd-server', 'jd-infra', 'jd-workflows', 'mkdocs-template', 'linux-bot', 'hack-the-box', 'libritos', 'waifuland-api', 'telelog'],
+      projects: [
+        'dbn-tools', 'docker-armhf', 'easy-static', 'dotfiles', 'jd-alpine', 'jd-bun',
+        'jd-server', 'jd-infra', 'jd-workflows', 'mkdocs-template', 'linux-bot',
+        'hack-the-box', 'libritos', 'waifuland-api', 'telelog'
+      ],
       colorClasses: ['green-600', 'blue-600', 'purple-600', 'yellow-600', 'indigo-600', 'red-600', 'gray-600'],
-      skills: ['ARM64', 'Linux', 'Self Hosting', 'System Design', 'Software Development', 'Pentesting', 'SDLC', 'Monitoring', 'Networking', 'Automation', 'Cloudflare', 'DevOps', 'SRE', 'Scripting', 'Containers', 'Orchestration'],
-      softSkills: ['Problem Solving', 'Teamwork', 'Communication', 'Mentoring', 'Client Management', 'Critical Thinking', 'Conflict Resolution', 'Leadership'],
+      skills: [
+        'ARM64', 'Linux', 'Self Hosting', 'System Design', 'Software Development', 'Pentesting',
+        'SDLC', 'Monitoring', 'Networking', 'Automation', 'Cloudflare', 'DevOps', 'SRE',
+        'Scripting', 'Containers', 'Orchestration'
+      ],
+      softSkills: [
+        'Problem Solving', 'Teamwork', 'Communication', 'Mentoring', 'Client Management',
+        'Critical Thinking', 'Conflict Resolution', 'Leadership'
+      ],
       videos: [
         { title: 'Hack The Box - Solving BANK [ES]', url: 'https://youtu.be/zxmCYEddfeU?si=qxtDAdr7eSE8m3XJ&t=4479' },
         { title: 'What is Git and Github? [EN]', url: 'https://www.youtube.com/watch?v=yusKpPVGLWg' },
@@ -137,6 +135,7 @@
       ]
     }" class="min-h-screen flex items-center justify-center p-4">
 
+    <!-- Canvas Visualizer Background -->
     <canvas id="audioVisualizer"></canvas>
 
     <main class="container p-8 rounded-lg shadow-xl max-w-4xl w-full">
@@ -244,11 +243,11 @@
                 </template>
             </div>
         </section>
+    </main>
 
-        <audio loop controls preload="auto" id="audioPlayer" style="display: none"
-            data-songs='["assets/cynthia_theme.mp3", "assets/forever_young_theme.mp3", "assets/goblin_slayer_main_theme.mp3", "assets/nier_automata_theme.mp3", "assets/tales_of_berseria_theme.mp3"]'>
-        </audio>
-
+    <audio loop controls preload="auto" id="audioPlayer" style="display: none"
+        data-songs='["assets/cynthia_theme.mp3", "assets/forever_young_theme.mp3", "assets/goblin_slayer_main_theme.mp3", "assets/nier_automata_theme.mp3", "assets/tales_of_berseria_theme.mp3"]'>
+    </audio>
 </body>
 
 </html>

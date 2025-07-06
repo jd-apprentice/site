@@ -1,3 +1,4 @@
+// ----------------- Variables ----------------- //
 const aboutMeText = document.querySelector('#about-me');
 const audioPlayerButton = document.querySelector('#audioPlayerButton');
 const audioPlayer = document.querySelector('#audioPlayer');
@@ -7,10 +8,12 @@ const aboutMeUrl = 'https://raw.githubusercontent.com/jd-apprentice/jd-apprentic
 const defaultText = `Hihi! Jonathan here`;
 const playIcon = '<i class="fas fa-play"></i>'
 const pauseIcon = '<i class="fas fa-pause"></i>'
+let isPlaying = false;
 
-function updatePlayPauseIcon() {
-    playPauseLabel.innerHTML = audioPlayer.paused ? playIcon : pauseIcon;
-}
+// ----------------- Helpers ----------------- //
+const updatePlayPauseIcon = () => playPauseLabel.innerHTML = audioPlayer.paused
+    ? playIcon
+    : pauseIcon;
 
 function setAudioSource(index) {
     audioPlayer.src = songs[index];
@@ -18,6 +21,7 @@ function setAudioSource(index) {
     updatePlayPauseIcon();
 }
 
+// ----------------- Event Listeners ----------------- //
 audioPlayerButton.addEventListener('click', (event) => {
     event.stopPropagation();
     const currentSongIndex = songs.findIndex(song => audioPlayer.currentSrc.endsWith(song));
@@ -34,23 +38,21 @@ audioPlayerButton.addEventListener('click', (event) => {
         return;
     }
 
-    if (audioPlayer.paused) {
-        audioPlayer.play();
-    } else {
-        audioPlayer.pause();
-    }
+    const action = audioPlayer.paused ? 'play' : 'pause';
+    audioPlayer[action]();
 
     updatePlayPauseIcon();
+    isPlaying = !audioPlayer.paused;
 });
 
 audioPlayer.addEventListener('play', () => {
     document.body.classList.add('music-playing');
+    isPlaying = true;
 });
-
 audioPlayer.addEventListener('pause', () => {
     document.body.classList.remove('music-playing');
+    isPlaying = false;
 });
-
 audioPlayer.addEventListener('ended', () => {
     document.body.classList.remove('music-playing');
     const current = songs.findIndex(song => audioPlayer.currentSrc.endsWith(song));
@@ -58,6 +60,7 @@ audioPlayer.addEventListener('ended', () => {
     setAudioSource(next);
 });
 
+// Initial setup
 audioPlayer.volume = 0.1;
 songs.forEach(song => {
     const source = document.createElement('source');
@@ -66,7 +69,6 @@ songs.forEach(song => {
     audioPlayer.appendChild(source);
 });
 setAudioSource(0);
-
 fetch(aboutMeUrl)
     .then(res => res.text())
     .then(text => aboutMeText.textContent = text || defaultText)
