@@ -31,7 +31,7 @@
         }
 
         body.music-playing {
-            background: linear-gradient(90deg, #1f2937, #374151, #1f2937);
+            background: linear-gradient(90deg, #4CAF50, #8BC34A, #4CAF50);
             /* Adjusted colors to match container */
             background-size: 200% 100%;
             animation: wave 30s linear infinite;
@@ -159,13 +159,16 @@
             <div class="flex flex-col items-center lg:items-end flex-grow">
                 <section class="flex flex-wrap justify-center lg:justify-end gap-4 mt-4 lg:mt-0 mb-4">
                     <button @click="showAbout = true" class="btn">about me</button>
-                    <button class="btn"><a rel="noopener" target="_blank"
-                            href="https://blog.jonathan.com.ar/">blog</a></button>
-                    <button class="btn"><a rel="noopener" target="_blank"
-                            href="https://links.jonathan.com.ar">contact</a></button>
+                    <button class="btn"><a @click.stop rel="noopener" target="_blank"
+                            href="https://blog.jonathan.com.ar/">blog <i
+                                class="fas fa-external-link-alt"></i></a></button>
+                    <button class="btn"><a @click.stop rel="noopener" target="_blank"
+                            href="https://links.jonathan.com.ar">contact <i
+                                class="fas fa-external-link-alt"></i></a></button>
                     <button @click="showSkills = true" class="btn">skills</button>
                     <button @click="showProjects = true" class="btn">projects</button>
-                    <button class="btn"><a rel="noopener" target="_blank" href="./assets/Resume.pdf">resume</a></button>
+                    <button class="btn"><a @click.stop rel="noopener" target="_blank" href="./assets/Resume.pdf">resume
+                            <i class="fas fa-external-link-alt"></i></a></button>
                     <button @click="showVideos = true" class="btn">videos</button>
                 </section>
             </div>

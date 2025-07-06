@@ -23,6 +23,7 @@ function setAudioSource(index) {
 
 // ----------------- Event Listeners ----------------- //
 audioPlayerButton.addEventListener('click', (event) => {
+    event.stopPropagation();
     const currentSongIndex = songs.findIndex(song => audioPlayer.currentSrc.endsWith(song));
 
     if (event.target.closest('#prevButton')) {
@@ -40,14 +41,18 @@ audioPlayerButton.addEventListener('click', (event) => {
     const action = audioPlayer.paused ? 'play' : 'pause';
     audioPlayer[action]();
 
-    document.body.classList.toggle('music-playing', !audioPlayer.paused);
-
     updatePlayPauseIcon();
     isPlaying = !audioPlayer.paused;
 });
 
-audioPlayer.addEventListener('play', () => document.body.classList.add('music-playing'));
-audioPlayer.addEventListener('pause', () => document.body.classList.remove('music-playing'));
+audioPlayer.addEventListener('play', () => {
+    document.body.classList.add('music-playing');
+    isPlaying = true;
+});
+audioPlayer.addEventListener('pause', () => {
+    document.body.classList.remove('music-playing');
+    isPlaying = false;
+});
 audioPlayer.addEventListener('ended', () => {
     document.body.classList.remove('music-playing');
     const current = songs.findIndex(song => audioPlayer.currentSrc.endsWith(song));
