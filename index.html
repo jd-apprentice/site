@@ -18,14 +18,34 @@
     <title>jd-apprentice - homelab enthusiast</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script defer src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="./index.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 
     <style>
         body {
             background-color: #111827;
             color: #e5e7eb;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        body.music-playing {
+            background: linear-gradient(90deg, #1f2937, #374151, #1f2937);
+            /* Adjusted colors to match container */
+            background-size: 200% 100%;
+            animation: wave 30s linear infinite;
+            /* Slower animation */
+        }
+
+        @keyframes wave {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 100% 0%;
+            }
         }
 
         .container {
@@ -72,6 +92,19 @@
         .profile-img {
             border: 4px solid #374151;
         }
+
+        /* Fullscreen canvas for audio visualizer as background */
+        #audioVisualizer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            background-color: #111827;
+            /* fallback */
+        }
     </style>
 </head>
 
@@ -101,6 +134,9 @@
         { title: 'A talk about open source [ES]', url: 'https://www.youtube.com/watch?v=B9WX3VC9TG4' }
       ]
     }" class="min-h-screen flex items-center justify-center p-4">
+
+    <!-- Canvas Visualizer Background -->
+    <canvas id="audioVisualizer"></canvas>
 
     <main class="container p-8 rounded-lg shadow-xl max-w-4xl w-full">
         <div class="flex flex-col lg:flex-row items-center lg:items-start mb-8">

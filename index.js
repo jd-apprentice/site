@@ -6,19 +6,19 @@ const playPauseLabel = document.querySelector('#playPauseLabel');
 const songs = JSON.parse(audioPlayer.dataset.songs);
 const aboutMeUrl = 'https://raw.githubusercontent.com/jd-apprentice/jd-apprentice/main/aboutme';
 const defaultText = `Hihi! Jonathan here`;
+const playIcon = '<i class="fas fa-play"></i>'
+const pauseIcon = '<i class="fas fa-pause"></i>'
 let isPlaying = false;
 
 // ----------------- Helpers ----------------- //
+const updatePlayPauseIcon = () => playPauseLabel.innerHTML = audioPlayer.paused
+    ? playIcon
+    : pauseIcon;
+
 function setAudioSource(index) {
     audioPlayer.src = songs[index];
     audioPlayer.play();
     updatePlayPauseIcon();
-}
-
-function updatePlayPauseIcon() {
-    playPauseLabel.innerHTML = audioPlayer.paused
-        ? `<i class="fas fa-play"></i>`
-        : `<i class="fas fa-pause"></i>`;
 }
 
 // ----------------- Event Listeners ----------------- //
@@ -37,26 +37,26 @@ audioPlayerButton.addEventListener('click', (event) => {
         return;
     }
 
-    // Toggle Play/Pause
-    if (audioPlayer.paused) {
-        audioPlayer.play();
-    } else {
-        audioPlayer.pause();
-    }
+    const action = audioPlayer.paused ? 'play' : 'pause';
+    audioPlayer[action]();
+
+    document.body.classList.toggle('music-playing', !audioPlayer.paused);
 
     updatePlayPauseIcon();
     isPlaying = !audioPlayer.paused;
 });
 
+audioPlayer.addEventListener('play', () => document.body.classList.add('music-playing'));
+audioPlayer.addEventListener('pause', () => document.body.classList.remove('music-playing'));
 audioPlayer.addEventListener('ended', () => {
+    document.body.classList.remove('music-playing');
     const current = songs.findIndex(song => audioPlayer.currentSrc.endsWith(song));
     const next = (current + 1) % songs.length;
     setAudioSource(next);
 });
 
-audioPlayer.volume = 0.2;
-
 // Initial setup
+audioPlayer.volume = 0.1;
 songs.forEach(song => {
     const source = document.createElement('source');
     source.src = song;
@@ -64,8 +64,6 @@ songs.forEach(song => {
     audioPlayer.appendChild(source);
 });
 setAudioSource(0);
-
-// Load about me content
 fetch(aboutMeUrl)
     .then(res => res.text())
     .then(text => aboutMeText.textContent = text || defaultText)
