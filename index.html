@@ -18,6 +18,9 @@
     <meta property="og:url" content="https://jonathan.com.ar/" />
     <meta property="og:type" content="website" />
     <title>jd-apprentice - homelab enthusiast</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script defer src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
@@ -33,22 +36,50 @@
 
         button,
         .btn {
-            background-color: #374151;
+            background: linear-gradient(135deg, #1f2937, #374151);
+            color: #e5e7eb;
+            border: 1px solid #4b5563;
+            border-radius: 0.75rem;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
 
         button:hover,
         .btn:hover {
-            background-color: #4b5563;
+            background: linear-gradient(135deg, #374151, #1f2937);
+            color: #60a5fa;
+            transform: translateY(-1px);
         }
 
+
         #audioPlayerButton {
-            background-color: #991b1b;
+            background: linear-gradient(135deg, #1f2937, #374151);
+            border: 2px solid #4b5563;
+            border-radius: 1rem;
+            padding: 0.75rem 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
         #audioPlayerButton:hover {
-            background-color: #b91c1c;
+            background: linear-gradient(135deg, #374151, #1f2937);
+            transform: translateY(-1px);
         }
+
+        #audioPlayerButton span {
+            color: #d1d5db;
+            font-size: 1.25rem;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        #audioPlayerButton span:hover {
+            color: #60a5fa;
+            /* soft blue glow */
+            transform: scale(1.15);
+        }
+
 
         .profile-img {
             border: 4px solid #374151;
@@ -124,7 +155,23 @@
     }" class="min-h-screen flex items-center justify-center">
 
     <main class="container p-8 rounded-lg shadow-xl max-w-4xl">
-        <section>
+        <div id="audioPlayerButton"
+            class="w-64 mx-auto mt-4 py-2 px-4 rounded-xl flex justify-between items-center shadow-md transition-transform bg-gradient-to-br from-gray-800 to-gray-700 border border-gray-600 hover:from-gray-700 hover:to-gray-800 transform hover:-translate-y-1">
+            <span id="prevButton"
+                class="text-gray-300 text-lg hover:text-blue-400 transition-transform transform hover:scale-110">
+                <i class="fas fa-backward"></i>
+            </span>
+            <span id="playPauseLabel"
+                class="text-gray-300 text-lg hover:text-blue-400 transition-transform transform hover:scale-110">
+                <i class="fas fa-play"></i>
+            </span>
+            <span id="nextButton"
+                class="text-gray-300 text-lg hover:text-blue-400 transition-transform transform hover:scale-110">
+                <i class="fas fa-forward"></i>
+            </span>
+        </div>
+
+        <section class="p-5">
             <img width="300" height="300"
                 src="https://avatars.githubusercontent.com/u/68082746?s=400&u=91d9f39e5c3715d8b3ef4bce134a346bbbe95150&v=4"
                 alt="pfp" class="profile-img mx-auto mb-4 rounded-full" />
@@ -161,11 +208,6 @@
 
             <button @click="showVideos = true" class="mt-4 mx-2 px-4 py-2 text-gray-200 rounded hover:text-white">
                 videos
-            </button>
-
-            <button id="audioPlayerButton"
-                class="cursor-pointer mt-4 mx-2 px-4 py-2 text-white rounded-xl border-2 border-gray-700">
-                play 🎵
             </button>
         </section>
 
@@ -218,8 +260,8 @@
         </section>
     </main>
 
-    <audio loop controls preload="auto" id="audioPlayer" style="display: none">
-        <source src="/assets/song.mp3" type="audio/mpeg" />
+    <audio loop controls preload="auto" id="audioPlayer" style="display: none"
+        data-songs='["assets/cynthia_theme.mp3", "assets/forever_young_theme.mp3", "assets/goblin_slayer_main_theme.mp3", "assets/nier_automata_theme.mp3", "assets/tales_of_berseria_theme.mp3"]'>
     </audio>
 </body>
 

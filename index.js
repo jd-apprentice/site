@@ -1,57 +1,72 @@
 // ----------------- Variables ----------------- //
 const aboutMeText = document.querySelector('#about-me');
 const audioPlayerButton = document.querySelector('#audioPlayerButton');
-
-/**
- * @type {HTMLAudioElement}
- */
 const audioPlayer = document.querySelector('#audioPlayer');
-
-const defaultText = `Hihi! Jonathan here`;
+const playPauseLabel = document.querySelector('#playPauseLabel');
+const songs = JSON.parse(audioPlayer.dataset.songs);
 const aboutMeUrl = 'https://raw.githubusercontent.com/jd-apprentice/jd-apprentice/main/aboutme';
-let isPlaying = false
+const defaultText = `Hihi! Jonathan here`;
+let isPlaying = false;
 
-// ----------------- Functions ----------------- //
-/**
- * @param {string} text
- */
-function addIcon(text) {
-    return text + ' 🎵';
-};
+// ----------------- Helpers ----------------- //
+function setAudioSource(index) {
+    audioPlayer.src = songs[index];
+    audioPlayer.play();
+    updatePlayPauseIcon();
+}
 
-/**
- * @param {string} style - The color of the button
- */
-function returnStyle(style) {
-    return `cursor-pointer mt-4 mx-2 px-4 py-2 bg-${style}-500 text-white rounded-xl border-2 border-black`;
-};
-
-/**
- * @description Obtains the text from the given url
- * @param {string} url
- */
-async function fetchText(url) {
-    const response = await fetch(url);
-    const text = await response.text();
-    return text;
+function updatePlayPauseIcon() {
+    playPauseLabel.innerHTML = audioPlayer.paused
+        ? `<i class="fas fa-play"></i>`
+        : `<i class="fas fa-pause"></i>`;
 }
 
 // ----------------- Event Listeners ----------------- //
-audioPlayerButton.addEventListener('click', () => {
-    if (!isPlaying) {
-        audioPlayer.play();
-        audioPlayerButton.textContent = addIcon('pause');
-        audioPlayerButton.className = returnStyle('blue');
-        isPlaying = !isPlaying;
-        return;
-    };
+audioPlayerButton.addEventListener('click', (event) => {
+    const currentSongIndex = songs.findIndex(song => audioPlayer.currentSrc.endsWith(song));
 
-    audioPlayer.pause();
-    audioPlayerButton.textContent = addIcon('play');
-    audioPlayerButton.className = returnStyle('red');
-    isPlaying = !isPlaying;
+    if (event.target.closest('#prevButton')) {
+        const prevIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+        setAudioSource(prevIndex);
+        return;
+    }
+
+    if (event.target.closest('#nextButton')) {
+        const nextIndex = (currentSongIndex + 1) % songs.length;
+        setAudioSource(nextIndex);
+        return;
+    }
+
+    // Toggle Play/Pause
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+    } else {
+        audioPlayer.pause();
+    }
+
+    updatePlayPauseIcon();
+    isPlaying = !audioPlayer.paused;
 });
 
-// ----------------- Main ----------------- //
+audioPlayer.addEventListener('ended', () => {
+    const current = songs.findIndex(song => audioPlayer.currentSrc.endsWith(song));
+    const next = (current + 1) % songs.length;
+    setAudioSource(next);
+});
+
 audioPlayer.volume = 0.2;
-fetchText(aboutMeUrl).then((text) => aboutMeText.textContent = text ?? defaultText);
+
+// Initial setup
+songs.forEach(song => {
+    const source = document.createElement('source');
+    source.src = song;
+    source.type = 'audio/mp3';
+    audioPlayer.appendChild(source);
+});
+setAudioSource(0);
+
+// Load about me content
+fetch(aboutMeUrl)
+    .then(res => res.text())
+    .then(text => aboutMeText.textContent = text || defaultText)
+    .catch(() => aboutMeText.textContent = defaultText);
