@@ -93,6 +93,11 @@
             border: 4px solid #374151;
         }
 
+        th,
+        td {
+            border-bottom: 1px solid #4b5563;
+        }
+
         /* Fullscreen canvas for audio visualizer as background */
         #audioVisualizer {
             position: fixed;
@@ -113,6 +118,7 @@
       showSkills: false,
       showProjects: false,
       showVideos: false,
+      showSalary: false,
       projects: [
         'dbn-tools', 'docker-armhf', 'easy-static', 'dotfiles', 'jd-alpine', 'jd-bun',
         'jd-server', 'jd-infra', 'jd-workflows', 'mkdocs-template', 'linux-bot',
@@ -132,6 +138,14 @@
         { title: 'Hack The Box - Solving BANK [ES]', url: 'https://youtu.be/zxmCYEddfeU?si=qxtDAdr7eSE8m3XJ&t=4479' },
         { title: 'What is Git and Github? [EN]', url: 'https://www.youtube.com/watch?v=yusKpPVGLWg' },
         { title: 'A talk about open source [ES]', url: 'https://www.youtube.com/watch?v=B9WX3VC9TG4' }
+      ],
+      salaries: [
+        { title: 'SR Application Security', startDate: '2025-06-01', salary: '39500 USD / YEAR' },
+        { title: 'SR DevOps', startDate: '2024-08-01', salary: '26000 USD / YEAR' },
+        { title: 'SSR DevOps', startDate: '2024-02-01', salary: '15000 USD / YEAR' },
+        { title: 'JR DevOps', startDate: '2023-08-01', salary: '7000 USD / YEAR' },
+        { title: 'SSR Software Developer', startDate: '2022-06-01', salary: '8500 USD / YEAR' },
+        { title: 'JR Frontend Developer', startDate: '2021-12-01', salary: '7000 USD / YEAR' }
       ]
     }" class="min-h-screen flex items-center justify-center p-4">
 
@@ -241,6 +255,40 @@
                         :class="['bg-' + colorClasses[index % colorClasses.length], 'text-gray-200', 'py-1', 'px-2', 'mb-2', 'mr-2', 'rounded', 'hover:opacity-90']"
                         x-text="video.title"></a>
                 </template>
+            </div>
+        </section>
+
+        <section x-show="showSalary" @click.away="showSalary = false" class="mt-4 p-4 rounded-lg"
+            style="background: linear-gradient(135deg, #1f2937, #374151);">
+            <p class="text-gray-400 mb-4">
+                Inspired by
+                <a href="https://fionera.de/" class="text-blue-400 hover:text-blue-500 hover:no-underline transition">
+            </p>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-700">
+                    <thead class="bg-gray-800">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                Title</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                Start Date</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                                Salary (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-gray-900 divide-y divide-gray-800">
+                        <template x-for="s in salaries" :key="s.startDate">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300" x-text="s.title"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300" x-text="s.startDate"></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300" x-text="s.salary"></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
             </div>
         </section>
     </main>
