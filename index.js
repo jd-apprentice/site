@@ -5,7 +5,9 @@ const audioPlayer = document.querySelector('#audioPlayer');
 const playPauseLabel = document.querySelector('#playPauseLabel');
 const songs = JSON.parse(audioPlayer.dataset.songs);
 const aboutMeUrl = 'https://raw.githubusercontent.com/jd-apprentice/jd-apprentice/main/aboutme';
-const defaultText = `Hihi! Jonathan here`;
+const defaultText = `Infrastructure specialist with experience in on-premise environments, hypervisors, and systems administration. 
+Passionate about building real projects—whether for fun or to deliver value. 
+Currently working as a Senior Application Security Engineer.`;
 const playIcon = '<i class="fas fa-play"></i>'
 const pauseIcon = '<i class="fas fa-pause"></i>'
 let isPlaying = false;
@@ -69,7 +71,3 @@ songs.forEach(song => {
     audioPlayer.appendChild(source);
 });
 setAudioSource(0);
-fetch(aboutMeUrl)
-    .then(res => res.text())
-    .then(text => aboutMeText.textContent = text || defaultText)
-    .catch(() => aboutMeText.textContent = defaultText);
