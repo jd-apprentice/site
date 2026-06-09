@@ -1,73 +1,66 @@
-// ----------------- Variables ----------------- //
-const aboutMeText = document.querySelector('#about-me');
-const audioPlayerButton = document.querySelector('#audioPlayerButton');
-const audioPlayer = document.querySelector('#audioPlayer');
-const playPauseLabel = document.querySelector('#playPauseLabel');
-const songs = JSON.parse(audioPlayer.dataset.songs);
-const aboutMeUrl = 'https://raw.githubusercontent.com/jd-apprentice/jd-apprentice/main/aboutme';
-const defaultText = `Infrastructure specialist with experience in on-premise environments, hypervisors, and systems administration. 
-Passionate about building real projects whether for fun or to deliver value. 
-Currently working as a Senior Application Security Engineer.`;
-const playIcon = '<i class="fas fa-play"></i>'
-const pauseIcon = '<i class="fas fa-pause"></i>'
-let isPlaying = false;
+// ── Audio Player ──
+const audio    = document.getElementById('audioPlayer');
+const playBtn  = document.getElementById('playPauseLabel');
+const prevBtn  = document.getElementById('prevButton');
+const nextBtn  = document.getElementById('nextButton');
+const songName = document.getElementById('songName');
 
-// ----------------- Helpers ----------------- //
-const updatePlayPauseIcon = () => playPauseLabel.innerHTML = audioPlayer.paused
-    ? playIcon
-    : pauseIcon;
+const songs = JSON.parse(audio.dataset.songs);
 
-function setAudioSource(index) {
-    audioPlayer.src = songs[index];
-    audioPlayer.play();
-    updatePlayPauseIcon();
+// ── Helpers ──
+function updatePlayIcon() {
+  playBtn.textContent = audio.paused ? '\u25B6' : '\u23F8'; // ▶ or ⏸
 }
 
-// ----------------- Event Listeners ----------------- //
-audioPlayerButton.addEventListener('click', (event) => {
-    event.stopPropagation();
-    const currentSongIndex = songs.findIndex(song => audioPlayer.currentSrc.endsWith(song));
+function setAudioSource(index) {
+  audio.src = songs[index];
+  audio.play();
+  updatePlayIcon();
+}
 
-    if (event.target.closest('#prevButton')) {
-        const prevIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-        setAudioSource(prevIndex);
-        return;
-    }
+function getCurrentIndex() {
+  return songs.findIndex(s => audio.currentSrc.endsWith(s));
+}
 
-    if (event.target.closest('#nextButton')) {
-        const nextIndex = (currentSongIndex + 1) % songs.length;
-        setAudioSource(nextIndex);
-        return;
-    }
+function updateSongName() {
+  const idx = getCurrentIndex();
+  if (idx !== -1) {
+    songName.textContent = songs[idx].split('/').pop();
+  }
+}
 
-    const action = audioPlayer.paused ? 'play' : 'pause';
-    audioPlayer[action]();
-
-    updatePlayPauseIcon();
-    isPlaying = !audioPlayer.paused;
+// ── Event Listeners ──
+playBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
 });
 
-audioPlayer.addEventListener('play', () => {
-    document.body.classList.add('music-playing');
-    isPlaying = true;
-});
-audioPlayer.addEventListener('pause', () => {
-    document.body.classList.remove('music-playing');
-    isPlaying = false;
-});
-audioPlayer.addEventListener('ended', () => {
-    document.body.classList.remove('music-playing');
-    const current = songs.findIndex(song => audioPlayer.currentSrc.endsWith(song));
-    const next = (current + 1) % songs.length;
-    setAudioSource(next);
+prevBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const idx = getCurrentIndex();
+  const prev = (idx - 1 + songs.length) % songs.length;
+  setAudioSource(prev);
 });
 
-// Initial setup
-audioPlayer.volume = 0.1;
-songs.forEach(song => {
-    const source = document.createElement('source');
-    source.src = song;
-    source.type = 'audio/mp3';
-    audioPlayer.appendChild(source);
+nextBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const idx = getCurrentIndex();
+  const next = (idx + 1) % songs.length;
+  setAudioSource(next);
 });
+
+audio.addEventListener('play',  updatePlayIcon);
+audio.addEventListener('pause', updatePlayIcon);
+audio.addEventListener('ended', () => {
+  const next = (getCurrentIndex() + 1) % songs.length;
+  setAudioSource(next);
+});
+audio.addEventListener('loadedmetadata', updateSongName);
+
+// ── Init ──
+audio.volume = 0.1;
 setAudioSource(0);

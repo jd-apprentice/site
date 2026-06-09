@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
             name="description"
-            content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and interesting things either for fun and professionally. I am currently working with devops culture. Homelabs, linux, finance, chess and anime. 🎮📈"
+            content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and interesting things either for fun and professionally. I am currently working with devops culture. Homelabs, linux, finance, chess and anime."
         />
         <meta
             name="keywords"
@@ -18,7 +18,7 @@
         />
         <meta
             property="og:description"
-            content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and interesting things either for fun and professionally. I am currently working with devops culture. Homelabs, linux, finance, chess and anime. 🎮📈"
+            content="From La Plata, Argentina. In the field of infraestructure and automation, building day by day useful and interesting things either for fun and professionally."
         />
         <meta
             property="og:image"
@@ -26,1040 +26,800 @@
         />
         <meta property="og:url" content="https://jonathan.com.ar/" />
         <meta property="og:type" content="website" />
-        <title>jd-apprentice - homelab enthusiast</title>
+        <title>jd-apprentice@portfolio:~$</title>
         <link
+            href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
         />
         <script
-            src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"
             defer
+            src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
         ></script>
         <script src="./index.js" defer></script>
-        <link
-            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-            rel="stylesheet"
-        />
-
         <style>
-            :root {
-                --bg: #09111f;
-                --bg-accent: #111c31;
-                --shell: rgba(12, 20, 35, 0.9);
-                --card: rgba(17, 24, 39, 0.88);
-                --card-strong: rgba(24, 34, 56, 0.95);
-                --border: rgba(148, 163, 184, 0.16);
-                --border-strong: rgba(96, 165, 250, 0.24);
-                --text: #e5e7eb;
-                --muted: #94a3b8;
-                --accent: #7dd3fc;
-                --accent-soft: rgba(125, 211, 252, 0.16);
-                --shadow: 0 24px 80px rgba(2, 6, 23, 0.48);
-                --shadow-soft: 0 16px 40px rgba(2, 6, 23, 0.3);
-            }
-
-            body {
-                background:
-                    radial-gradient(
-                        circle at top,
-                        rgba(56, 189, 248, 0.14),
-                        transparent 32%
-                    ),
-                    radial-gradient(
-                        circle at 85% 15%,
-                        rgba(59, 130, 246, 0.12),
-                        transparent 24%
-                    ),
-                    linear-gradient(
-                        180deg,
-                        var(--bg-accent) 0%,
-                        var(--bg) 55%,
-                        #050b16 100%
-                    );
-                color: var(--text);
+            /* ── RESET ── */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
                 margin: 0;
-                overflow-x: hidden;
+                padding: 0;
+            }
+
+            /* ── CRT BASE ── */
+            body {
+                background: #050505;
+                color: #00ff41;
+                font-family: "VT323", "Courier New", monospace;
+                font-size: 18px;
+                line-height: 1.35;
                 min-height: 100vh;
-            }
-
-            body.music-playing {
-                background: linear-gradient(90deg, #4caf50, #8bc34a, #4caf50);
-                /* Adjusted colors to match container */
-                background-size: 200% 100%;
-                animation: wave 30s linear infinite;
-                /* Slower animation */
-            }
-
-            @keyframes wave {
-                0% {
-                    background-position: 0% 0%;
-                }
-
-                100% {
-                    background-position: 100% 0%;
-                }
-            }
-
-            .container {
-                position: relative;
-                background: linear-gradient(
-                    145deg,
-                    rgba(8, 15, 29, 0.94),
-                    rgba(17, 24, 39, 0.88)
-                );
-                border: 1px solid var(--border);
-                border-radius: 2rem;
-                box-shadow: var(--shadow);
-                backdrop-filter: blur(18px);
-                overflow: hidden;
-                width: min(100%, calc(100vw - 2rem));
-            }
-
-            .container::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background:
-                    linear-gradient(
-                        135deg,
-                        rgba(125, 211, 252, 0.08),
-                        transparent 30%
-                    ),
-                    linear-gradient(
-                        315deg,
-                        rgba(255, 255, 255, 0.04),
-                        transparent 28%
-                    );
-                pointer-events: none;
-            }
-
-            .btn {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 3rem;
-                background: linear-gradient(
-                    180deg,
-                    rgba(17, 24, 39, 0.92),
-                    rgba(30, 41, 59, 0.92)
-                );
-                color: var(--text);
-                border: 1px solid rgba(148, 163, 184, 0.18);
-                border-radius: 1rem;
-                padding: 0.75rem 1rem;
-                box-shadow:
-                    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-                    var(--shadow-soft);
-                transition:
-                    transform 0.25s ease,
-                    border-color 0.25s ease,
-                    box-shadow 0.25s ease,
-                    color 0.25s ease;
-            }
-
-            .btn:hover {
-                color: var(--accent);
-                border-color: var(--border-strong);
-                transform: translateY(-2px);
-                box-shadow: 0 18px 35px rgba(14, 165, 233, 0.12);
-            }
-
-            #audioPlayerButton {
-                background: linear-gradient(
-                    145deg,
-                    rgba(15, 23, 42, 0.95),
-                    rgba(30, 41, 59, 0.92)
-                );
-                border: 1px solid rgba(148, 163, 184, 0.2);
-                border-radius: 1.25rem;
-                padding: 0.75rem 1.5rem;
-                box-shadow: var(--shadow-soft);
-                transition:
-                    background 0.3s ease,
-                    transform 0.2s ease,
-                    border-color 0.2s ease;
-            }
-
-            #audioPlayerButton span {
-                color: #d1d5db;
-                font-size: 1.25rem;
-                padding: 0.5rem 1rem;
-                transition:
-                    color 0.3s ease,
-                    transform 0.2s ease;
-            }
-
-            #audioPlayerButton span:hover {
-                color: #60a5fa;
-                transform: scale(1.15);
-            }
-
-            .profile-img {
-                border: 4px solid rgba(255, 255, 255, 0.08);
-                box-shadow: 0 18px 50px rgba(15, 23, 42, 0.45);
-            }
-
-            th,
-            td {
-                border-bottom: 1px solid #4b5563;
-            }
-
-            .hero-card {
-                position: relative;
-                border: 1px solid var(--border);
-                border-radius: 1.5rem;
-                background: linear-gradient(
-                    160deg,
-                    rgba(17, 24, 39, 0.8),
-                    rgba(15, 23, 42, 0.55)
-                );
-                padding: 1.25rem;
-                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-            }
-
-            .section-card {
-                position: relative;
-                margin-top: 1.25rem;
-                padding: 1.5rem;
-                border-radius: 1.5rem;
-                background: linear-gradient(
-                    160deg,
-                    var(--card),
-                    rgba(15, 23, 42, 0.85)
-                );
-                border: 1px solid var(--border);
-                box-shadow: var(--shadow-soft);
-            }
-
-            .section-card::after,
-            .hero-card::after {
-                content: "";
-                position: absolute;
-                inset: 0;
-                border-radius: inherit;
-                border: 1px solid rgba(255, 255, 255, 0.03);
-                pointer-events: none;
-            }
-
-            .eyebrow {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.45rem;
-                padding: 0.45rem 0.8rem;
-                border-radius: 9999px;
-                background: var(--accent-soft);
-                border: 1px solid rgba(125, 211, 252, 0.22);
-                color: #bae6fd;
-                font-size: 0.78rem;
-                font-weight: 600;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-            }
-
-            .hero-stats {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-                gap: 0.9rem;
-                margin-top: 1.25rem;
-            }
-
-            .hero-stat {
-                min-height: 96px;
-                padding: 1rem;
-                border-radius: 1.15rem;
-                background: linear-gradient(
-                    180deg,
-                    rgba(15, 23, 42, 0.9),
-                    rgba(17, 24, 39, 0.72)
-                );
-                border: 1px solid rgba(148, 163, 184, 0.14);
-            }
-
-            .hero-stat strong {
-                display: block;
-                font-size: 1.3rem;
-                line-height: 1.2;
-                color: #f8fafc;
-                margin-bottom: 0.25rem;
-            }
-
-            .hero-stat span {
-                color: var(--muted);
-                font-size: 0.88rem;
-            }
-
-            .quick-nav {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 0.85rem;
-                width: 100%;
-            }
-
-            .section-title {
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-                gap: 1rem;
-                margin-bottom: 1rem;
-            }
-
-            .section-title p {
-                color: var(--muted);
-                margin: 0;
-                font-size: 0.92rem;
-            }
-
-            .tag-chip {
-                display: inline-flex;
-                align-items: center;
                 justify-content: center;
-                padding: 0.55rem 0.85rem;
-                border-radius: 0.9rem;
-                border: 1px solid rgba(148, 163, 184, 0.12);
-                background: rgba(30, 41, 59, 0.72);
-                color: #e2e8f0;
-                font-size: 0.92rem;
-                transition:
-                    transform 0.2s ease,
-                    border-color 0.2s ease,
-                    background 0.2s ease;
+                padding: 16px;
+                overflow-x: hidden;
+                text-rendering: optimizeSpeed;
             }
 
-            .tag-chip:hover {
-                transform: translateY(-1px);
-                border-color: var(--border-strong);
-                background: rgba(51, 65, 85, 0.88);
+            /* scanlines overlay */
+            body::after {
+                content: "";
+                position: fixed;
+                inset: 0;
+                background: repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 65, 0.04) 2px,
+                    rgba(0, 255, 65, 0.04) 4px
+                );
+                pointer-events: none;
+                z-index: 999;
             }
 
-            .projects-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 0.95rem;
+            /* CRT screen flicker */
+            @keyframes flicker {
+                0% {
+                    opacity: 0.97;
+                }
+                5% {
+                    opacity: 1;
+                }
+                10% {
+                    opacity: 0.98;
+                }
+                15% {
+                    opacity: 1;
+                }
+                20% {
+                    opacity: 0.97;
+                }
+                50% {
+                    opacity: 1;
+                }
+                80% {
+                    opacity: 0.98;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0.97;
+                }
             }
 
-            .project-card {
-                position: relative;
+            /* ── TERMINAL WINDOW ── */
+            .terminal {
+                width: 100%;
+                max-width: 880px;
+                max-height: min(92vh, 760px);
+                background: #0c0c0c;
+                border: 1px solid #003300;
+                border-radius: 8px;
+                overflow: hidden;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
-                min-height: 158px;
-                padding: 1rem;
-                border-radius: 1.35rem;
-                background: linear-gradient(
-                    160deg,
-                    rgba(17, 24, 39, 0.98),
-                    rgba(30, 41, 59, 0.78)
-                );
-                border: 1px solid rgba(148, 163, 184, 0.12);
-                overflow: hidden;
-                transition:
-                    transform 0.22s ease,
-                    border-color 0.22s ease,
-                    box-shadow 0.22s ease;
-            }
-
-            .project-card::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(
-                    135deg,
-                    rgba(125, 211, 252, 0.12),
-                    transparent 55%
-                );
-                opacity: 0;
-                transition: opacity 0.22s ease;
-            }
-
-            .project-card:hover {
-                transform: translateY(-4px);
-                border-color: rgba(125, 211, 252, 0.28);
-                box-shadow: 0 18px 35px rgba(8, 47, 73, 0.28);
-            }
-
-            .project-card:hover::before {
-                opacity: 1;
-            }
-
-            .project-card > * {
+                box-shadow:
+                    0 0 20px rgba(0, 255, 65, 0.08),
+                    0 0 50px rgba(0, 255, 65, 0.04),
+                    inset 0 0 40px rgba(0, 0, 0, 0.6);
+                animation: flicker 6s infinite;
                 position: relative;
-                z-index: 1;
             }
 
-            .project-card .project-index {
-                display: inline-flex;
+            /* ── TITLE BAR ── */
+            .titlebar {
+                background: #001a00;
+                padding: 6px 12px;
+                display: flex;
                 align-items: center;
-                justify-content: center;
-                width: 2rem;
-                height: 2rem;
-                border-radius: 0.8rem;
-                background: rgba(125, 211, 252, 0.12);
-                color: #bae6fd;
-                font-size: 0.8rem;
-                font-weight: 700;
+                gap: 10px;
+                border-bottom: 1px solid #003300;
+                flex-shrink: 0;
+                user-select: none;
             }
-
-            .project-card h3 {
-                margin: 0.85rem 0 0.35rem;
-                color: #f8fafc;
-                font-size: 1rem;
-                line-height: 1.35;
-                word-break: break-word;
+            .titlebar-dots {
+                display: flex;
+                gap: 6px;
             }
-
-            .project-card p {
-                margin: 0;
-                color: var(--muted);
-                font-size: 0.82rem;
+            .titlebar-dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                border: 1px solid rgba(0, 255, 65, 0.2);
+            }
+            .titlebar-dot.red {
+                background: #330000;
+            }
+            .titlebar-dot.yellow {
+                background: #332200;
+            }
+            .titlebar-dot.green {
+                background: #003300;
+            }
+            .titlebar-text {
+                color: #008800;
+                font-size: 15px;
                 letter-spacing: 0.04em;
-                text-transform: uppercase;
+            }
+            .titlebar-text .highlight {
+                color: #00cc00;
             }
 
-            .project-card .project-link {
-                margin-top: 1rem;
-                color: #bae6fd;
-                font-size: 0.88rem;
-                font-weight: 600;
+            /* ── SCREEN (scrollable content) ── */
+            .screen {
+                flex: 1;
+                overflow-y: auto;
+                padding: 20px 22px 12px;
+                scrollbar-width: thin;
+                scrollbar-color: #003300 transparent;
+            }
+            .screen::-webkit-scrollbar {
+                width: 6px;
+            }
+            .screen::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            .screen::-webkit-scrollbar-thumb {
+                background: #003300;
+                border-radius: 3px;
             }
 
-            .app-shell {
-                display: grid;
-                grid-template-columns: 280px minmax(0, 1fr);
-                gap: 1.25rem;
-                align-items: start;
-                position: relative;
-                z-index: 1;
+            /* ── STATUS BAR (audio) ── */
+            .statusbar {
+                flex-shrink: 0;
+                background: #001100;
+                border-top: 1px solid #003300;
+                padding: 6px 14px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                font-size: 16px;
+                color: #006600;
             }
-
-            .sidebar-panel,
-            .content-panel {
-                position: relative;
-                border-radius: 1.75rem;
-                border: 1px solid var(--border);
-                background: linear-gradient(
-                    160deg,
-                    rgba(10, 17, 31, 0.94),
-                    rgba(17, 24, 39, 0.88)
-                );
-                box-shadow: var(--shadow-soft);
+            .statusbar audio {
+                display: none;
+            }
+            .statusbar-controls {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .statusbar-btn {
+                background: none;
+                border: 1px solid #003300;
+                color: #00aa00;
+                font-family: inherit;
+                font-size: 16px;
+                padding: 2px 8px;
+                cursor: pointer;
+                transition:
+                    background 0.15s,
+                    color 0.15s;
+                border-radius: 3px;
+            }
+            .statusbar-btn:hover {
+                background: #003300;
+                color: #00ff41;
+            }
+            .statusbar-song {
+                color: #007700;
                 overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                text-align: right;
+                flex: 1;
+                min-width: 0;
+            }
+            .statusbar-song .now-playing {
+                color: #00aa00;
             }
 
-            .sidebar-panel {
-                padding: 1.35rem;
-                position: sticky;
-                top: 1rem;
-            }
-
-            .content-panel {
-                padding: 1.4rem;
-            }
-
-            .panel-kicker {
-                color: var(--muted);
-                font-size: 0.76rem;
-                letter-spacing: 0.22em;
-                text-transform: uppercase;
-                margin-bottom: 0.75rem;
-            }
-
-            .sidebar-panel .profile-img {
-                width: 112px;
-                height: 112px;
-                margin-bottom: 1rem;
-            }
-
-            .sidebar-copy {
-                margin-bottom: 1.25rem;
-            }
-
-            .sidebar-copy h1 {
-                margin: 0 0 0.35rem;
-                font-size: 2rem;
-                line-height: 1.05;
-                color: #f8fafc;
-            }
-
-            .sidebar-copy p {
-                margin: 0;
-                color: var(--muted);
-                line-height: 1.6;
-                font-size: 0.94rem;
-            }
-
-            .mini-facts {
-                display: grid;
-                gap: 0.75rem;
-                margin: 1.1rem 0 1.25rem;
-            }
-
-            .mini-fact {
-                padding: 0.85rem 0.95rem;
-                border-radius: 1rem;
-                background: rgba(15, 23, 42, 0.82);
-                border: 1px solid rgba(148, 163, 184, 0.12);
-            }
-
-            .mini-fact strong {
-                display: block;
-                color: #f8fafc;
-                font-size: 0.92rem;
-                margin-bottom: 0.2rem;
-            }
-
-            .mini-fact span {
-                color: var(--muted);
-                font-size: 0.82rem;
-            }
-
-            .sidebar-nav {
-                display: grid;
-                gap: 0.7rem;
-                margin: 1rem 0 1.25rem;
-            }
-
-            .sidebar-nav-button {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
-                padding: 0.9rem 1rem;
-                border-radius: 1rem;
-                border: 1px solid rgba(148, 163, 184, 0.12);
-                background: rgba(15, 23, 42, 0.7);
-                color: #dbeafe;
+            /* ── TYPOGRAPHY ── */
+            a {
+                color: #00cc00;
+                text-decoration: underline;
+                text-underline-offset: 3px;
+                text-decoration-color: #004400;
                 transition:
-                    transform 0.2s ease,
-                    border-color 0.2s ease,
-                    background 0.2s ease;
+                    color 0.15s,
+                    text-decoration-color 0.15s;
+            }
+            a:hover {
+                color: #00ff41;
+                text-decoration-color: #00ff41;
             }
 
-            .sidebar-nav-button:hover,
-            .sidebar-nav-button.is-active {
-                transform: translateX(4px);
-                border-color: rgba(125, 211, 252, 0.26);
-                background: rgba(18, 40, 66, 0.92);
+            /* ── PROMPT ── */
+            .prompt-line {
+                color: #00aa00;
+                font-size: 18px;
+                margin: 6px 0;
+            }
+            .prompt-line .cmd {
+                color: #00ff41;
+            }
+            .cursor {
+                display: inline-block;
+                width: 10px;
+                height: 1.2em;
+                background: #00ff41;
+                vertical-align: text-bottom;
+                margin-left: 2px;
+                animation: blink 1s step-end infinite;
+            }
+            @keyframes blink {
+                0%,
+                100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0;
+                }
             }
 
-            .sidebar-links {
+            /* ── COMMANDS GRID ── */
+            .cmd-grid {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 0.7rem;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 6px;
+                margin: 10px 0 16px;
             }
-
-            .sidebar-link {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 3rem;
-                border-radius: 0.95rem;
-                border: 1px solid rgba(148, 163, 184, 0.12);
-                background: rgba(15, 23, 42, 0.72);
-                color: #e2e8f0;
+            .cmd-btn {
+                background: transparent;
+                border: 1px solid #002a00;
+                color: #00aa00;
+                font-family: inherit;
+                font-size: 17px;
+                padding: 6px 12px;
+                text-align: left;
+                cursor: pointer;
                 transition:
-                    border-color 0.2s ease,
-                    transform 0.2s ease;
+                    background 0.15s,
+                    color 0.15s,
+                    border-color 0.15s;
+                border-radius: 3px;
+            }
+            .cmd-btn:hover,
+            .cmd-btn.active {
+                background: #001a00;
+                color: #00ff41;
+                border-color: #005500;
+            }
+            .cmd-btn .prompt {
+                color: #007700;
+            }
+            .cmd-btn .name {
+                color: #00cc00;
             }
 
-            .sidebar-link:hover {
-                transform: translateY(-1px);
-                border-color: rgba(125, 211, 252, 0.26);
+            /* ── SECTION OUTPUT ── */
+            .output {
+                margin: 8px 0 4px;
+                padding: 10px 14px;
+                border-left: 2px solid #003300;
+            }
+            .output-title {
+                color: #00ff41;
+                font-size: 20px;
+                margin-bottom: 8px;
+            }
+            .output-text {
+                color: #00bb00;
+                line-height: 1.55;
+                margin-bottom: 10px;
             }
 
-            .content-header {
+            /* -- persistent about header -- */
+            .about-header {
                 display: flex;
-                justify-content: space-between;
-                gap: 1rem;
-                margin-bottom: 1rem;
-                padding-bottom: 1rem;
-                border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+                gap: 16px;
+                align-items: flex-start;
+                margin-bottom: 4px;
             }
-
-            .content-header h2 {
-                margin: 0.2rem 0 0;
-                font-size: 2rem;
-                line-height: 1.1;
-                color: #f8fafc;
+            .about-body {
+                flex: 1;
+                min-width: 0;
             }
-
-            .content-header p,
-            .content-note {
-                margin: 0;
-                color: var(--muted);
-                line-height: 1.65;
-            }
-
-            .section-card.compact {
+            .about-body .output-title {
                 margin-top: 0;
-                padding: 1.25rem;
-                background: linear-gradient(
-                    160deg,
-                    rgba(15, 23, 42, 0.84),
-                    rgba(17, 24, 39, 0.94)
-                );
+            }
+            .about-body .output-text {
+                margin-bottom: 0;
             }
 
-            .section-stack {
-                display: grid;
-                gap: 1rem;
+            /* -- separator line -- */
+            .separator {
+                height: 1px;
+                background: #003300;
+                margin: 14px 0 8px;
+                border: none;
             }
 
-            .project-list {
-                display: grid;
-                gap: 0.75rem;
+            /* -- about profile pic -- */
+            .profile-pic {
+                flex-shrink: 0;
+                border: 1px solid #003300;
+                border-radius: 4px;
+                padding: 3px;
+            }
+            .profile-pic img {
+                display: block;
+                width: 96px;
+                height: 96px;
+                border-radius: 2px;
+                filter: sepia(1) hue-rotate(80deg) saturate(2) brightness(0.8)
+                    contrast(1.2);
+                image-rendering: pixelated;
             }
 
+            /* -- skills tags -- */
+            .skill-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+                margin: 8px 0;
+            }
+            .skill-tag {
+                border: 1px solid #003300;
+                padding: 2px 10px;
+                color: #00bb00;
+                font-size: 16px;
+                border-radius: 3px;
+            }
+
+            /* -- project rows -- */
             .project-row {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                gap: 1rem;
-                padding: 1rem 1.05rem;
-                border-radius: 1rem;
-                border: 1px solid rgba(148, 163, 184, 0.1);
-                background: rgba(15, 23, 42, 0.68);
-                transition:
-                    transform 0.2s ease,
-                    border-color 0.2s ease,
-                    background 0.2s ease;
+                gap: 10px;
+                padding: 6px 10px;
+                border-bottom: 1px solid #002200;
+                transition: background 0.12s;
             }
-
             .project-row:hover {
-                transform: translateX(4px);
-                border-color: rgba(125, 211, 252, 0.24);
-                background: rgba(17, 32, 53, 0.88);
+                background: #001100;
+            }
+            .project-row:last-child {
+                border-bottom: none;
+            }
+            .project-row .idx {
+                color: #005500;
+                min-width: 28px;
+            }
+            .project-row .pname {
+                color: #00cc00;
+                flex: 1;
+            }
+            .project-row .plink {
+                color: #007700;
+                font-size: 15px;
+            }
+            .project-row:hover .plink {
+                color: #00ff41;
             }
 
-            .project-row strong {
+            /* -- video rows -- */
+            .video-row {
                 display: block;
-                color: #f8fafc;
-                margin-bottom: 0.2rem;
+                padding: 6px 10px;
+                border-bottom: 1px solid #002200;
+                text-decoration: none;
+                transition: background 0.12s;
+            }
+            .video-row:hover {
+                background: #001100;
+            }
+            .video-row .vtitle {
+                color: #00cc00;
+            }
+            .video-row .vsource {
+                color: #007700;
+                font-size: 15px;
+                margin-left: 6px;
             }
 
-            .project-row span,
-            .project-row small {
-                color: var(--muted);
+            /* -- social links -- */
+            .social-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin: 8px 0;
+            }
+            .social-link {
+                display: inline-block;
+                border: 1px solid #002a00;
+                padding: 3px 12px;
+                color: #00aa00;
+                text-decoration: none;
+                border-radius: 3px;
+                font-size: 16px;
+                transition:
+                    background 0.15s,
+                    color 0.15s;
+            }
+            .social-link:hover {
+                background: #001a00;
+                color: #00ff41;
+                border-color: #005500;
             }
 
-            .table-shell {
-                overflow-x: auto;
-                border-radius: 1rem;
-                border: 1px solid rgba(148, 163, 184, 0.1);
+            /* ── TRANSITIONS ── */
+            .fade-enter {
+                animation: fadeIn 0.25s ease-out;
             }
-
-            @media (max-width: 900px) {
-                .app-shell {
-                    grid-template-columns: 1fr;
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(4px);
                 }
-
-                .sidebar-panel {
-                    position: relative;
-                    top: auto;
-                }
-
-                .sidebar-links {
-                    grid-template-columns: repeat(3, 1fr);
-                }
-
-                .content-header {
-                    flex-direction: column;
-                }
-
-                .project-row {
-                    flex-direction: column;
-                    align-items: flex-start;
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
                 }
             }
 
+            /* ── RESPONSIVE ── */
             @media (max-width: 640px) {
-                .sidebar-links {
+                body {
+                    padding: 0;
+                    align-items: stretch;
+                }
+                .terminal {
+                    max-width: 100%;
+                    max-height: 100vh;
+                    border-radius: 0;
+                    border: none;
+                }
+                .screen {
+                    padding: 14px 14px 10px;
+                }
+                .about-header {
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                }
+                .profile-pic img {
+                    width: 72px;
+                    height: 72px;
+                }
+                .cmd-grid {
                     grid-template-columns: 1fr 1fr;
                 }
-            }
-
-            /* Fullscreen canvas for audio visualizer as background */
-            #audioVisualizer {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                z-index: -1;
-                pointer-events: none;
-                background-color: #111827;
-                /* fallback */
+                .statusbar {
+                    font-size: 14px;
+                    padding: 5px 10px;
+                }
+                .titlebar-text {
+                    font-size: 13px;
+                }
+                .prompt-line {
+                    font-size: 16px;
+                }
             }
         </style>
     </head>
-
-    <body
-        x-data="{
-      activeSection: 'about',
-      projects: [
-        'dbn-tools', 'docker-armhf', 'easy-static', 'dotfiles', 'jd-alpine', 'jd-bun',
-        'jd-server', 'jd-infra', 'jd-workflows', 'mkdocs-template', 'linux-bot',
-        'hack-the-box', 'libritos', 'waifuland-api', 'telelog'
-      ],
-      colorClasses: ['green-600', 'blue-600', 'purple-600', 'yellow-600', 'indigo-600', 'red-600', 'gray-600'],
-      skills: [
-        'ARM64', 'Linux', 'Self Hosting', 'System Design', 'Software Development', 'Pentesting',
-        'SDLC', 'Monitoring', 'Networking', 'Automation', 'Cloudflare', 'DevOps', 'SRE',
-        'Scripting', 'Containers', 'Orchestration'
-      ],
-      softSkills: [
-        'Problem Solving', 'Teamwork', 'Communication', 'Mentoring', 'Client Management',
-        'Critical Thinking', 'Conflict Resolution', 'Leadership'
-      ],
-      videos: [
-        { title: 'Hack The Box - Solving BANK [ES]', url: 'https://youtu.be/zxmCYEddfeU?si=qxtDAdr7eSE8m3XJ&t=4479' },
-        { title: 'What is Git and Github? [EN]', url: 'https://www.youtube.com/watch?v=yusKpPVGLWg' },
-        { title: 'A talk about open source [ES]', url: 'https://www.youtube.com/watch?v=B9WX3VC9TG4' }
-      ],
-
-    }"
-        class="min-h-screen flex items-center justify-center p-4"
-    >
-        <!-- Canvas Visualizer Background -->
-        <canvas id="audioVisualizer"></canvas>
-
-        <main
-            class="container p-4 md:p-6 lg:p-7 max-w-none w-full min-h-[calc(100vh-2rem)]"
-        >
-            <div class="app-shell">
-                <aside class="sidebar-panel">
-                    <p class="panel-kicker">Personal console</p>
-                    <img
-                        width="150"
-                        height="150"
-                        src="https://avatars.githubusercontent.com/u/68082746?s=400&u=91d9f39e5c3715d8b3ef4bce134a346bbbe95150&v=4"
-                        alt="pfp"
-                        class="profile-img rounded-full"
-                    />
-
-                    <div class="sidebar-copy">
-                        <h1>jd-apprentice</h1>
-                        <p>
-                            Infra, security, homelabs and shipped side-projects
-                            in a compact control-panel layout.
-                        </p>
-                    </div>
-
-                    <div class="mini-facts">
-                        <div class="mini-fact">
-                            <strong>Based in Argentina</strong>
-                            <span>infra + appsec + builder mindset</span>
-                        </div>
-                        <div class="mini-fact">
-                            <strong>Current focus</strong>
-                            <span
-                                >security, automation and useful software</span
-                            >
-                        </div>
-                    </div>
-
-                    <div
-                        id="audioPlayerButton"
-                        @click.stop
-                        class="w-full py-2 px-4 rounded-xl flex justify-between items-center shadow-md transition-transform mb-4"
-                    >
-                        <span
-                            id="prevButton"
-                            class="text-gray-300 text-lg hover:text-blue-400 hover:scale-110 cursor-pointer"
-                            ><i class="fas fa-backward"></i
-                        ></span>
-                        <span
-                            id="playPauseLabel"
-                            class="text-gray-300 text-lg hover:text-blue-400 hover:scale-110 cursor-pointer"
-                            ><i class="fas fa-play"></i
-                        ></span>
-                        <span
-                            id="nextButton"
-                            class="text-gray-300 text-lg hover:text-blue-400 hover:scale-110 cursor-pointer"
-                            ><i class="fas fa-forward"></i
-                        ></span>
-                    </div>
-
-                    <nav class="sidebar-nav">
-                        <button
-                            @click="activeSection = 'about'"
-                            :class="{'is-active': activeSection === 'about'}"
-                            class="sidebar-nav-button"
-                        >
-                            <span>About</span><span>01</span>
-                        </button>
-                        <button
-                            @click="activeSection = 'skills'"
-                            :class="{'is-active': activeSection === 'skills'}"
-                            class="sidebar-nav-button"
-                        >
-                            <span>Skills</span><span>02</span>
-                        </button>
-                        <button
-                            @click="activeSection = 'projects'"
-                            :class="{'is-active': activeSection === 'projects'}"
-                            class="sidebar-nav-button"
-                        >
-                            <span>Projects</span><span>03</span>
-                        </button>
-                        <button
-                            @click="activeSection = 'videos'"
-                            :class="{'is-active': activeSection === 'videos'}"
-                            class="sidebar-nav-button"
-                        >
-                            <span>Videos</span><span>04</span>
-                        </button>
-
-                    </nav>
-
-                    <div class="sidebar-links">
-                        <a
-                            class="sidebar-link"
-                            rel="noopener"
-                            target="_blank"
-                            href="https://blog.jonathan.com.ar/"
-                            >Blog</a
-                        >
-                        <a
-                            class="sidebar-link"
-                            rel="noopener"
-                            target="_blank"
-                            href="https://links.jonathan.com.ar"
-                            >Contact</a
-                        >
-                        <a
-                            class="sidebar-link"
-                            rel="noopener"
-                            target="_blank"
-                            href="./assets/Resume.pdf"
-                            >Resume</a
-                        >
-                    </div>
-                </aside>
-
-                <section class="content-panel">
-                    <div class="content-header">
-                        <div>
-                            <p
-                                class="panel-kicker"
-                                x-show="activeSection === 'about'"
-                            >
-                                Overview
-                            </p>
-                            <p
-                                class="panel-kicker"
-                                x-show="activeSection === 'skills'"
-                            >
-                                Capabilities
-                            </p>
-                            <p
-                                class="panel-kicker"
-                                x-show="activeSection === 'projects'"
-                            >
-                                Selected work
-                            </p>
-                            <p
-                                class="panel-kicker"
-                                x-show="activeSection === 'videos'"
-                            >
-                                Talks & media
-                            </p>
-
-
-                            <h2 x-show="activeSection === 'about'">
-                                Compact personal dashboard.
-                            </h2>
-                            <h2 x-show="activeSection === 'skills'">
-                                Technical and soft skills.
-                            </h2>
-                            <h2 x-show="activeSection === 'projects'">
-                                Projects presented as a curated list.
-                            </h2>
-                            <h2 x-show="activeSection === 'videos'">
-                                Videos and public appearances.
-                            </h2>
-
-                        </div>
-                    </div>
-
-                    <div class="section-stack">
-                        <section
-                            x-show="activeSection === 'about'"
-                            class="section-card compact"
-                        >
-                            <div class="section-title">
-                                <div>
-                                    <h3
-                                        class="text-xl font-bold text-gray-100 mb-1"
-                                    >
-                                        Bio
-                                    </h3>
-                                    <p>
-                                        A tighter intro with room for the
-                                        essentials.
-                                    </p>
-                                </div>
-                            </div>
-                            <p
-                                id="about-me"
-                                class="text-gray-300 leading-relaxed content-note"
-                            >
-                                Infrastructure specialist with experience in
-                                on-premise environments, hypervisors, and
-                                systems administration. Passionate about
-                                building real projects—whether for fun or to
-                                deliver value. Currently working as a Senior
-                                Application Security Engineer.
-                            </p>
-                        </section>
-
-                        <section
-                            x-show="activeSection === 'skills'"
-                            class="section-card compact"
-                        >
-                            <div class="section-title">
-                                <div>
-                                    <h3
-                                        class="text-xl font-bold text-gray-100 mb-1"
-                                    >
-                                        Technical Skills
-                                    </h3>
-                                    <p>Core stack and operating strengths.</p>
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap mt-3">
-                                <template
-                                    x-for="(skill, index) in skills"
-                                    :key="skill"
-                                >
-                                    <span
-                                        :class="['bg-' + colorClasses[index % colorClasses.length], 'tag-chip', 'mb-2', 'mr-2']"
-                                        x-text="skill"
-                                    ></span>
-                                </template>
-                            </div>
-                            <div class="section-title mt-5">
-                                <div>
-                                    <h3
-                                        class="text-xl font-bold text-gray-100 mb-1"
-                                    >
-                                        Soft Skills
-                                    </h3>
-                                    <p>
-                                        How I usually work with people and
-                                        teams.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap mt-3">
-                                <template
-                                    x-for="(skill, index) in softSkills"
-                                    :key="skill"
-                                >
-                                    <span
-                                        :class="['bg-' + colorClasses[index % colorClasses.length], 'tag-chip', 'mb-2', 'mr-2']"
-                                        x-text="skill"
-                                    ></span>
-                                </template>
-                            </div>
-                        </section>
-
-                        <section
-                            x-show="activeSection === 'projects'"
-                            class="section-card compact"
-                        >
-                            <div class="section-title">
-                                <div>
-                                    <h3
-                                        class="text-xl font-bold text-gray-100 mb-1"
-                                    >
-                                        Projects
-                                    </h3>
-                                    <p>
-                                        Less grid, more curated repository list.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="project-list mt-4">
-                                <template
-                                    x-for="(project, index) in projects"
-                                    :key="project"
-                                >
-                                    <a
-                                        target="_blank"
-                                        :href="['https://github.com/jd-apprentice/' + project]"
-                                        class="project-row"
-                                    >
-                                        <div>
-                                            <small
-                                                x-text="String(index + 1).padStart(2, '0')"
-                                            ></small>
-                                            <strong x-text="project"></strong>
-                                            <span
-                                                >Repository / experiments /
-                                                tooling</span
-                                            >
-                                        </div>
-                                        <span class="project-link"
-                                            >Open repo ↗</span
-                                        >
-                                    </a>
-                                </template>
-                            </div>
-                        </section>
-
-                        <section
-                            x-show="activeSection === 'videos'"
-                            class="section-card compact"
-                        >
-                            <div class="section-title">
-                                <div>
-                                    <h3
-                                        class="text-xl font-bold text-gray-100 mb-1"
-                                    >
-                                        Videos
-                                    </h3>
-                                    <p>Talks, walkthroughs and recordings.</p>
-                                </div>
-                            </div>
-                            <div class="project-list mt-4">
-                                <template
-                                    x-for="video in videos"
-                                    :key="video.title"
-                                >
-                                    <a
-                                        target="_blank"
-                                        :href="video.url"
-                                        class="project-row"
-                                    >
-                                        <div>
-                                            <strong
-                                                x-text="video.title"
-                                            ></strong>
-                                            <span>External video link</span>
-                                        </div>
-                                        <span class="project-link"
-                                            >Watch ↗</span
-                                        >
-                                    </a>
-                                </template>
-                            </div>
-                        </section>
-
-
-                    </div>
-                </section>
+    <body>
+        <div class="terminal">
+            <!-- ─── TITLE BAR ─── -->
+            <div class="titlebar">
+                <div class="titlebar-dots">
+                    <span class="titlebar-dot red"></span>
+                    <span class="titlebar-dot yellow"></span>
+                    <span class="titlebar-dot green"></span>
+                </div>
+                <div class="titlebar-text">
+                    <span class="highlight">jd-apprentice</span>@portfolio: ~
+                </div>
             </div>
-        </main>
 
-        <audio
-            loop
-            controls
-            preload="auto"
-            id="audioPlayer"
-            style="display: none"
-            data-songs='["assets/cynthia_theme.mp3", "assets/forever_young_theme.mp3", "assets/goblin_slayer_main_theme.mp3", "assets/nier_automata_theme.mp3", "assets/tales_of_berseria_theme.mp3"]'
-        ></audio>
+            <!-- ─── SCREEN ─── -->
+            <div class="screen" x-data="portfolio()">
+                <div class="about-header">
+                    <div class="profile-pic">
+                        <img
+                            src="https://avatars.githubusercontent.com/u/68082746?s=400&u=91d9f39e5c3715d8b3ef4bce134a346bbbe95150&v=4"
+                            alt="jd-apprentice"
+                            width="96"
+                            height="96"
+                        />
+                    </div>
+                    <div class="about-body">
+                        <div class="output-title" style="margin-bottom: 4px">
+                            # about
+                        </div>
+                        <div class="output-text">
+                            Infrastructure specialist with experience in
+                            on-premise environments, hypervisors, and systems
+                            administration. Passionate about building real
+                            projects—whether for fun or to deliver value.
+                            Currently working as a Senior Application Security
+                            Engineer.
+                        </div>
+                        <div class="social-links" style="margin-top: 6px">
+                            <a
+                                class="social-link"
+                                href="https://blog.jonathan.com.ar/"
+                                target="_blank"
+                                rel="noopener"
+                                >blog</a
+                            >
+                            <a
+                                class="social-link"
+                                href="https://links.jonathan.com.ar"
+                                target="_blank"
+                                rel="noopener"
+                                >contact</a
+                            >
+                            <a
+                                class="social-link"
+                                href="./assets/Resume.pdf"
+                                target="_blank"
+                                rel="noopener"
+                                >resume</a
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="separator"></div>
+
+                <!-- PROMPT (always visible) -->
+                <div class="prompt-line">
+                    <span class="prompt">jd-apprentice@portfolio:~$</span>
+                    <span class="cursor"></span>
+                </div>
+
+                <!-- COMMAND BUTTONS -->
+                <div class="cmd-grid">
+                    <template
+                        x-for="cmd in ['skills','projects','videos','help','clear']"
+                        :key="cmd"
+                    >
+                        <button
+                            class="cmd-btn"
+                            :class="{ active: activeSection === cmd }"
+                            @click="runCommand(cmd)"
+                            x-text="'$ ' + cmd"
+                        ></button>
+                    </template>
+                </div>
+
+                <!-- ─── HELP (shown when no section or 'help' cmd) ─── -->
+                <div
+                    class="output fade-enter"
+                    x-show="activeSection === 'help' || !activeSection"
+                >
+                    <div class="output-title"># available commands</div>
+                    <div class="output-text">
+                        <span style="color: #007700">skills</span> — Technical
+                        &amp; soft skills<br />
+                        <span style="color: #007700">projects</span> — My
+                        projects<br />
+                        <span style="color: #007700">videos</span> — Talks &amp;
+                        media<br />
+                        <span style="color: #007700">help</span> — Show this
+                        list<br />
+                        <span style="color: #007700">clear</span> — Clear screen
+                        to initial state<br />
+                    </div>
+                </div>
+
+                <!-- ─── SKILLS ─── -->
+                <div
+                    class="output fade-enter"
+                    x-show="activeSection === 'skills'"
+                >
+                    <div class="output-title"># technical skills</div>
+                    <div class="skill-tags">
+                        <template x-for="skill in skills" :key="skill">
+                            <span class="skill-tag" x-text="skill"></span>
+                        </template>
+                    </div>
+                    <div
+                        class="output-title"
+                        style="font-size: 17px; margin-top: 12px"
+                    >
+                        # soft skills
+                    </div>
+                    <div class="skill-tags">
+                        <template x-for="skill in softSkills" :key="skill">
+                            <span class="skill-tag" x-text="skill"></span>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- ─── PROJECTS ─── -->
+                <div
+                    class="output fade-enter"
+                    x-show="activeSection === 'projects'"
+                >
+                    <div class="output-title"># projects (14)</div>
+                    <div>
+                        <template
+                            x-for="(project, index) in projects"
+                            :key="project"
+                        >
+                            <a
+                                class="project-row"
+                                :href="'https://github.com/jd-apprentice/' + project"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <span
+                                    class="idx"
+                                    x-text="String(index + 1).padStart(2, '0')"
+                                ></span>
+                                <span class="pname" x-text="project"></span>
+                                <span class="plink">→</span>
+                            </a>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- ─── VIDEOS ─── -->
+                <div
+                    class="output fade-enter"
+                    x-show="activeSection === 'videos'"
+                >
+                    <div class="output-title"># videos (4)</div>
+                    <div>
+                        <template x-for="video in videos" :key="video.title">
+                            <a
+                                class="video-row"
+                                :href="video.url"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <span
+                                    class="vtitle"
+                                    x-text="video.title"
+                                ></span>
+                                <span class="vsource">↗</span>
+                            </a>
+                        </template>
+                    </div>
+                </div>
+            </div>
+            <!-- /.screen -->
+
+            <!-- ─── STATUS BAR (audio player) ─── -->
+            <div class="statusbar">
+                <div class="statusbar-controls">
+                    <button
+                        class="statusbar-btn"
+                        id="prevButton"
+                        title="Previous"
+                    >
+                        ◀◀
+                    </button>
+                    <button
+                        class="statusbar-btn"
+                        id="playPauseLabel"
+                        title="Play/Pause"
+                    >
+                        ▶
+                    </button>
+                    <button class="statusbar-btn" id="nextButton" title="Next">
+                        ▶▶
+                    </button>
+                </div>
+                <div class="statusbar-song" id="nowPlaying">
+                    <span class="now-playing">♫</span>
+                    <span id="songName">cynthia_theme.mp3</span>
+                </div>
+                <audio
+                    id="audioPlayer"
+                    loop
+                    preload="auto"
+                    data-songs='["assets/cynthia_theme.mp3","assets/forever_young_theme.mp3","assets/goblin_slayer_main_theme.mp3","assets/nier_automata_theme.mp3","assets/tales_of_berseria_theme.mp3"]'
+                ></audio>
+            </div>
+        </div>
+        <!-- /.terminal -->
+
+        <script>
+            document.addEventListener("alpine:init", () => {
+                Alpine.data("portfolio", () => ({
+                    // ── state ──
+                    activeSection: "",
+                    projects: [
+                        "dbn-tools",
+                        "docker-armhf",
+                        "easy-static",
+                        "dotfiles",
+                        "site",
+                        "jd-bun",
+                        "jd-infra",
+                        "jd-workflows",
+                        "mkdocs-template",
+                        "scruticode",
+                        "hack-the-box",
+                        "libritos",
+                        "waifuland-api",
+                        "telelog",
+                    ],
+                    skills: [
+                        "Arm",
+                        "Linux",
+                        "Self Hosting",
+                        "System Design",
+                        "Software Development",
+                        "AppSec",
+                        "SDLC",
+                        "Monitoring",
+                        "Networking",
+                        "Automation",
+                        "Cloudflare",
+                        "DevOps",
+                        "SysAdmin",
+                        "SRE",
+                        "Scripting",
+                        "Containers",
+                        "Orchestration",
+                    ],
+                    softSkills: [
+                        "Problem Solving",
+                        "Teamwork",
+                        "Communication",
+                        "Mentoring",
+                        "Client Management",
+                        "Critical Thinking",
+                        "Conflict Resolution",
+                        "Leadership",
+                    ],
+                    videos: [
+                        {
+                            title: "Hack The Box - Solving BANK [ES]",
+                            url: "https://youtu.be/zxmCYEddfeU?si=qxtDAdr7eSE8m3XJ&t=4479",
+                        },
+                        {
+                            title: "What is Git and Github? [EN]",
+                            url: "https://www.youtube.com/watch?v=yusKpPVGLWg",
+                        },
+                        {
+                            title: "A talk about open source [ES]",
+                            url: "https://www.youtube.com/watch?v=B9WX3VC9TG4",
+                        },
+                        {
+                            title: "FLISoL La Plata 2026 [ES]",
+                            url: "https://www.youtube.com/live/AsrxMCzQGOg?si=1neNlODAQByLemR3&t=14593",
+                        },
+                    ],
+
+                    // ── methods ──
+                    runCommand(cmd) {
+                        if (cmd === "clear") {
+                            this.activeSection = "";
+                        } else {
+                            this.activeSection = cmd;
+                        }
+                    },
+                }));
+            });
+        </script>
     </body>
 </html>
