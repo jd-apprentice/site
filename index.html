@@ -35,7 +35,6 @@
             defer
             src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
         ></script>
-        <script src="./index.js" defer></script>
         <style>
             /* ── RESET ── */
             *,
@@ -552,20 +551,77 @@
                             # about
                         </div>
                         <div class="output-text">
+                            <strong style="color: #00ff41"
+                                >SysAdmin/DevOps | Software Development |
+                                Application Security</strong
+                            ><br />
+                            Founder of
+                            <a
+                                href="https://dyallab.com.ar"
+                                target="_blank"
+                                rel="noopener"
+                                >Dyallab</a
+                            >
+                            — transforming ideas into Reality.
+                        </div>
+                        <div class="output-text" style="margin-top: 6px">
                             Infrastructure specialist with experience in
                             on-premise environments, hypervisors, and systems
                             administration. Passionate about building real
-                            projects—whether for fun or to deliver value.
+                            projects whether for fun or to deliver value.
                             Currently working as a Senior Application Security
                             Engineer.
                         </div>
+                        <div class="output-text" style="margin-top: 6px">
+                            <span style="color: #007700">2026 Roadmap:</span
+                            ><br />
+                            • Launch a product with active users.<br />
+                            • Earn an Infrastructure Certification.<br />
+                            • Self-host a &gt;30B LLM.<br />
+                            • Deep forest expedition (3+ days).
+                        </div>
+                        <div
+                            class="output-text"
+                            style="margin-top: 6px; color: #008800"
+                        >
+                            Interests: Homelabbing, Robotics, Books, Chess &amp;
+                            Photography
+                        </div>
                         <div class="social-links" style="margin-top: 6px">
+                            <a
+                                class="social-link"
+                                href="https://github.com/jd-apprentice"
+                                target="_blank"
+                                rel="noopener"
+                                >github</a
+                            >
                             <a
                                 class="social-link"
                                 href="https://blog.jonathan.com.ar/"
                                 target="_blank"
                                 rel="noopener"
                                 >blog</a
+                            >
+                            <a
+                                class="social-link"
+                                href="https://app.hackthebox.com/users/834305"
+                                target="_blank"
+                                rel="noopener"
+                                >htb</a
+                            >
+                            <a
+                                class="social-link"
+                                href="https://tryhackme.com/p/jd.apprentice"
+                                target="_blank"
+                                rel="noopener"
+                                >thm</a
+                            >
+                            <a
+                                class="social-link"
+                                href="https://www.openbugbounty.org/researchers/dyallo/"
+                                target="_blank"
+                                rel="noopener"
+                                >obb</a
                             >
                             <a
                                 class="social-link"
@@ -596,7 +652,7 @@
                 <!-- COMMAND BUTTONS -->
                 <div class="cmd-grid">
                     <template
-                        x-for="cmd in ['skills','projects','videos','help','clear']"
+                        x-for="cmd in ['skills','projects','communities','videos','help','clear']"
                         :key="cmd"
                     >
                         <button
@@ -619,6 +675,8 @@
                         &amp; soft skills<br />
                         <span style="color: #007700">projects</span> — My
                         projects<br />
+                        <span style="color: #007700">communities</span> —
+                        Communities &amp; organizations<br />
                         <span style="color: #007700">videos</span> — Talks &amp;
                         media<br />
                         <span style="color: #007700">help</span> — Show this
@@ -657,15 +715,15 @@
                     class="output fade-enter"
                     x-show="activeSection === 'projects'"
                 >
-                    <div class="output-title"># projects (14)</div>
+                    <div class="output-title"># projects (6)</div>
                     <div>
                         <template
                             x-for="(project, index) in projects"
-                            :key="project"
+                            :key="project.name"
                         >
                             <a
                                 class="project-row"
-                                :href="'https://github.com/jd-apprentice/' + project"
+                                :href="project.url"
                                 target="_blank"
                                 rel="noopener"
                             >
@@ -673,9 +731,67 @@
                                     class="idx"
                                     x-text="String(index + 1).padStart(2, '0')"
                                 ></span>
-                                <span class="pname" x-text="project"></span>
-                                <span class="plink">→</span>
+                                <span class="pname">
+                                    <span x-text="project.name"></span>
+                                    <span
+                                        style="color: #006600; font-size: 15px"
+                                        x-text="'(' + project.desc + ')'"
+                                    ></span>
+                                </span>
+                                <span
+                                    class="plink"
+                                    x-text="project.statusIcon + ' ' + project.status"
+                                ></span>
                             </a>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- ─── COMMUNITIES ─── -->
+                <div
+                    class="output fade-enter"
+                    x-show="activeSection === 'communities'"
+                >
+                    <div class="output-title"># current</div>
+                    <div>
+                        <template
+                            x-for="org in communities.current"
+                            :key="org.name"
+                        >
+                            <a
+                                class="project-row"
+                                :href="org.url"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <span
+                                    class="pname"
+                                    style="color: #00cc00"
+                                    x-text="org.name"
+                                ></span>
+                                <span class="plink" x-text="org.role"></span>
+                            </a>
+                        </template>
+                    </div>
+                    <div
+                        class="output-title"
+                        style="font-size: 17px; margin-top: 12px"
+                    >
+                        # past
+                    </div>
+                    <div>
+                        <template
+                            x-for="org in communities.past"
+                            :key="org.name"
+                        >
+                            <div class="project-row">
+                                <span
+                                    class="pname"
+                                    style="color: #00cc00"
+                                    x-text="org.name"
+                                ></span>
+                                <span class="plink" x-text="org.role"></span>
+                            </div>
                         </template>
                     </div>
                 </div>
@@ -709,77 +825,117 @@
             <!-- ─── STATUS BAR (audio player) ─── -->
             <div class="statusbar">
                 <div class="statusbar-controls">
-                    <button
-                        class="statusbar-btn"
-                        id="prevButton"
-                        title="Previous"
-                    >
-                        ◀◀
-                    </button>
-                    <button
-                        class="statusbar-btn"
-                        id="playPauseLabel"
-                        title="Play/Pause"
-                    >
-                        ▶
-                    </button>
-                    <button class="statusbar-btn" id="nextButton" title="Next">
-                        ▶▶
-                    </button>
+                    <button class="statusbar-btn" id="prevButton" title="Previous">◀◀</button>
+                    <button class="statusbar-btn" id="playPauseLabel" title="Play/Pause">▶</button>
+                    <button class="statusbar-btn" id="nextButton" title="Next">▶▶</button>
                 </div>
                 <div class="statusbar-song" id="nowPlaying">
                     <span class="now-playing">♫</span>
                     <span id="songName">cynthia_theme.mp3</span>
                 </div>
-                <audio
-                    id="audioPlayer"
-                    loop
-                    preload="auto"
-                    data-songs='["assets/cynthia_theme.mp3","assets/forever_young_theme.mp3","assets/goblin_slayer_main_theme.mp3","assets/nier_automata_theme.mp3","assets/tales_of_berseria_theme.mp3"]'
-                ></audio>
+                <audio id="audioPlayer" preload="auto"></audio>
             </div>
         </div>
         <!-- /.terminal -->
 
+        <script src="./index.js" defer></script>
         <script>
             document.addEventListener("alpine:init", () => {
                 Alpine.data("portfolio", () => ({
                     // ── state ──
                     activeSection: "",
                     projects: [
-                        "dbn-tools",
-                        "docker-armhf",
-                        "easy-static",
-                        "dotfiles",
-                        "site",
-                        "jd-bun",
-                        "jd-infra",
-                        "jd-workflows",
-                        "mkdocs-template",
-                        "scruticode",
-                        "hack-the-box",
-                        "libritos",
-                        "waifuland-api",
-                        "telelog",
+                        {
+                            name: "Mainhost",
+                            desc: "High-performance Game Hosting (Minecraft/SAMP)",
+                            status: "Live",
+                            statusIcon: "\uD83D\uDFE2",
+                            url: "https://mainhost.dyallab.com.ar/",
+                        },
+                        {
+                            name: "Dyabox",
+                            desc: "Retro Gaming Retail & IT Hardware Solutions",
+                            status: "Live",
+                            statusIcon: "\uD83D\uDFE2",
+                            url: "https://dyabox.dyallab.com.ar/",
+                        },
+                        {
+                            name: "Blog",
+                            desc: "Stuff that I made goes here",
+                            status: "Live",
+                            statusIcon: "\uD83D\uDFE2",
+                            url: "https://blog.jonathan.com.ar",
+                        },
+                        {
+                            name: "Scruticode",
+                            desc: "Evaluate quality and processes in your SDLC",
+                            status: "Hold",
+                            statusIcon: "\u23F3",
+                            url: "https://github.com/jd-apprentice/Scruticode",
+                        },
+                        {
+                            name: "PriceNexus",
+                            desc: "Price tracking in Argentine online stores",
+                            status: "Hold",
+                            statusIcon: "\u23F3",
+                            url: "https://github.com/Dyallab/PriceNexus",
+                        },
+                        {
+                            name: "HenKaiPan",
+                            desc: "AppSec Platform",
+                            status: "Live",
+                            statusIcon: "\uD83D\uDFE2",
+                            url: "https://henkaipan.dyallab.com.ar/",
+                        },
                     ],
+                    communities: {
+                        current: [
+                            {
+                                name: "RustLang ES",
+                                role: "Staff",
+                                url: "https://rustlang-es.org/",
+                            },
+                            {
+                                name: "Cloud Tinkerers",
+                                role: "Contributor",
+                                url: "https://cloudtinkerers.com/",
+                            },
+                            {
+                                name: "Proxmox Community Scripts",
+                                role: "Contributor",
+                                url: "https://community-scripts.org/",
+                            },
+                            {
+                                name: "D1stinct",
+                                role: "Contributor",
+                                url: "https://www.linkedin.com/company/d1stinct/",
+                            },
+                        ],
+                        past: [
+                            { name: "Club DevOps", role: "Staff" },
+                            { name: "Frontend Cafe", role: "Mentor" },
+                            { name: "Sin JR No Hay SR", role: "Mentor" },
+                            { name: "Instituto Web", role: "Mentor" },
+                        ],
+                    },
                     skills: [
-                        "Arm",
                         "Linux",
-                        "Self Hosting",
-                        "System Design",
-                        "Software Development",
-                        "AppSec",
-                        "SDLC",
-                        "Monitoring",
-                        "Networking",
-                        "Automation",
-                        "Cloudflare",
                         "DevOps",
                         "SysAdmin",
                         "SRE",
-                        "Scripting",
+                        "AppSec",
+                        "Networking",
+                        "Automation",
                         "Containers",
                         "Orchestration",
+                        "Cloudflare",
+                        "Monitoring",
+                        "Self Hosting",
+                        "System Design",
+                        "Scripting",
+                        "Software Development",
+                        "SDLC",
+                        "Arm",
                     ],
                     softSkills: [
                         "Problem Solving",
@@ -793,20 +949,20 @@
                     ],
                     videos: [
                         {
-                            title: "Hack The Box - Solving BANK [ES]",
+                            title: "Bueno Bonito y Barato Version Open Source [ES]",
+                            url: "https://www.youtube.com/watch?v=B9WX3VC9TG4",
+                        },
+                        {
+                            title: "Hack The Box Meetup #17 [ES]",
                             url: "https://youtu.be/zxmCYEddfeU?si=qxtDAdr7eSE8m3XJ&t=4479",
+                        },
+                        {
+                            title: "Ciclo DevOps Ajustado al Software Libre [ES]",
+                            url: "https://www.youtube.com/live/AsrxMCzQGOg?si=eo9EjCA87jNl1Fuh&t=14656",
                         },
                         {
                             title: "What is Git and Github? [EN]",
                             url: "https://www.youtube.com/watch?v=yusKpPVGLWg",
-                        },
-                        {
-                            title: "A talk about open source [ES]",
-                            url: "https://www.youtube.com/watch?v=B9WX3VC9TG4",
-                        },
-                        {
-                            title: "FLISoL La Plata 2026 [ES]",
-                            url: "https://www.youtube.com/live/AsrxMCzQGOg?si=1neNlODAQByLemR3&t=14593",
                         },
                     ],
 
