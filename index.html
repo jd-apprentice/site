@@ -253,6 +253,9 @@
 
             /* ── PROMPT ── */
             .prompt-line {
+                display: flex;
+                align-items: center;
+                gap: 4px;
                 color: #00aa00;
                 font-size: 18px;
                 margin: 6px 0;
@@ -260,23 +263,23 @@
             .prompt-line .cmd {
                 color: #00ff41;
             }
-            .cursor {
-                display: inline-block;
-                width: 10px;
-                height: 1.2em;
-                background: #00ff41;
-                vertical-align: text-bottom;
-                margin-left: 2px;
-                animation: blink 1s step-end infinite;
+            .terminal-input {
+                flex: 1;
+                background: transparent;
+                border: none;
+                outline: none;
+                color: #00ff41;
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit;
+                padding: 0;
+                margin: 0;
+                caret-color: #00ff41;
+                min-width: 20px;
             }
-            @keyframes blink {
-                0%,
-                100% {
-                    opacity: 1;
-                }
-                50% {
-                    opacity: 0;
-                }
+            .terminal-input::selection {
+                background: #003300;
+                color: #00ff41;
             }
 
             /* ── COMMANDS GRID ── */
@@ -536,7 +539,7 @@
             </div>
 
             <!-- ─── SCREEN ─── -->
-            <div class="screen" x-data="portfolio()">
+            <div class="screen" x-data="portfolio()" @click="focusInput($event)">
                 <div class="about-header">
                     <div class="profile-pic">
                         <img
@@ -625,9 +628,7 @@
                             >
                             <a
                                 class="social-link"
-                                href="https://links.jonathan.com.ar"
-                                target="_blank"
-                                rel="noopener"
+                                href="mailto:contacto@jonathan.com.ar"
                                 >contact</a
                             >
                             <a
@@ -646,13 +647,23 @@
                 <!-- PROMPT (always visible) -->
                 <div class="prompt-line">
                     <span class="prompt">jd-apprentice@portfolio:~$</span>
-                    <span class="cursor"></span>
+                    <input
+                        class="terminal-input"
+                        type="text"
+                        x-model="commandInput"
+                        @keydown.enter="handleCommand"
+                        @keydown="handleKeydown"
+                        x-ref="terminalInput"
+                        autocomplete="off"
+                        spellcheck="false"
+                        autofocus
+                    />
                 </div>
 
                 <!-- COMMAND BUTTONS -->
                 <div class="cmd-grid">
                     <template
-                        x-for="cmd in ['skills','projects','communities','videos','help','clear']"
+                        x-for="cmd in ['skills','projects','communities','videos','help']"
                         :key="cmd"
                     >
                         <button
@@ -681,8 +692,6 @@
                         media<br />
                         <span style="color: #007700">help</span> — Show this
                         list<br />
-                        <span style="color: #007700">clear</span> — Clear screen
-                        to initial state<br />
                     </div>
                 </div>
 
@@ -966,12 +975,71 @@
                         },
                     ],
 
+                    // ── input state ──
+                    commandInput: "",
+                    commandHistory: [],
+                    historyIndex: -1,
+
                     // ── methods ──
                     runCommand(cmd) {
+                        const valid = [
+                            "skills",
+                            "projects",
+                            "communities",
+                            "videos",
+                            "help",
+                            "clear",
+                        ];
                         if (cmd === "clear") {
                             this.activeSection = "";
-                        } else {
+                        } else if (valid.includes(cmd)) {
                             this.activeSection = cmd;
+                        } else {
+                            this.activeSection = "help";
+                        }
+                        this.$nextTick(() => {
+                            const input = this.$refs.terminalInput;
+                            if (input) input.focus();
+                        });
+                    },
+                    handleCommand() {
+                        const cmd = this.commandInput.trim().toLowerCase();
+                        if (!cmd) return;
+                        this.commandHistory.push(cmd);
+                        this.historyIndex = this.commandHistory.length;
+                        this.runCommand(cmd);
+                        this.commandInput = "";
+                    },
+                    focusInput(e) {
+                        if (
+                            e.target.tagName !== "INPUT" &&
+                            e.target.tagName !== "BUTTON" &&
+                            e.target.tagName !== "A"
+                        ) {
+                            this.$refs.terminalInput?.focus();
+                        }
+                    },
+                    handleKeydown(e) {
+                        if (e.key === "ArrowUp") {
+                            e.preventDefault();
+                            if (this.historyIndex > 0) {
+                                this.historyIndex--;
+                                this.commandInput =
+                                    this.commandHistory[this.historyIndex];
+                            }
+                        } else if (e.key === "ArrowDown") {
+                            e.preventDefault();
+                            if (
+                                this.historyIndex <
+                                this.commandHistory.length - 1
+                            ) {
+                                this.historyIndex++;
+                                this.commandInput =
+                                    this.commandHistory[this.historyIndex];
+                            } else {
+                                this.historyIndex = this.commandHistory.length;
+                                this.commandInput = "";
+                            }
                         }
                     },
                 }));
