@@ -65,6 +65,12 @@
   */
   document.addEventListener('DOMContentLoaded', function () {
     document.body.classList.add('page-entered');
+    /* Drop the transform once the fade-in is done: a transformed <body>
+       becomes the containing block for position:fixed children, which makes
+       the starfield and the mascots scroll with the page. */
+    window.setTimeout(function () {
+      document.body.style.transform = 'none';
+    }, 700);
   });
 
 })();
