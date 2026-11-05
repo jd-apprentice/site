@@ -34,33 +34,30 @@
         <main class="wrap">
             <section class="hero" aria-labelledby="page-title">
                 <div class="hero-scene">
-                    <a class="hero-source" href="https://giphy.com/gifs/ova-black-rock-shooter-98dujYZyq4mOc" target="_blank" rel="noopener" aria-label="View Black Rock Shooter OVA GIF on GIPHY">
-                        <img class="hero-gif loop-gif" src="https://media2.giphy.com/media/98dujYZyq4mOc/giphy.gif" alt="Black Rock Shooter from the OVA" />
+                    <a class="hero-source" href="https://giphy.com/gifs/frieren-frg898-s2-jtDEDcqMjDVODssiEs" target="_blank" rel="noopener" aria-label="View Frieren GIF on GIPHY">
+                        <img class="hero-gif loop-gif" src="https://media.giphy.com/media/jtDEDcqMjDVODssiEs/giphy.gif" alt="Frieren with a flower crown in a meadow" />
                     </a>
                     <div class="scene-shade" aria-hidden="true"></div>
                     <div class="hero-copy">
-                        <p class="eyebrow"><span class="status-dot"></span> HOMELAB // FIELD NOTES</p>
                         <h1 id="page-title">A small lab.<br /><span>Real systems.</span></h1>
                         <p>
-                            A visual tour of the infrastructure I actually run:
-                            virtualized hosts, segmented networks, self-hosted
-                            services, and the operational glue between them.
+                            What I actually run: Proxmox, VLANs,<br />
+                            and self-hosted services.
                         </p>
                         <a class="scroll-cta" href="#map">$ explore_the_setup <span>↓</span></a>
                     </div>
                     <a class="anime-sticker" href="https://giphy.com/gifs/anime-happiness-happy-girl-smile-FEQltjYKsAzX2Uy9FC" target="_blank" rel="noopener" aria-label="View Wuthering Waves anime GIF on GIPHY">
                         <img class="loop-gif" src="https://media2.giphy.com/media/FEQltjYKsAzX2Uy9FC/giphy.gif" alt="Animated Wuthering Waves anime character" />
                     </a>
-                    <div class="scene-label">EST. IN A BEDROOM · ALWAYS A WORK IN PROGRESS</div>
                 </div>
             </section>
 
             <section class="snapshot" aria-label="Homelab snapshot">
-                <div class="snapshot-title"><span>//</span> CURRENT SNAPSHOT</div>
+                <div class="snapshot-title"><span>//</span> CURRENT NUMBERS</div>
                 <div class="stat-grid">
                     <article class="stat-card">
                         <strong>04</strong>
-                        <span>online Proxmox nodes</span>
+                        <span>Proxmox nodes in the cluster</span>
                     </article>
                     <article class="stat-card">
                         <strong>38</strong>
@@ -208,7 +205,7 @@
                         <span class="card-index">01 / OBSERVABILITY</span>
                         <h3>Know when things break</h3>
                         <p>Metrics, dashboards, logs and alerting for the services I operate.</p>
-                        <div class="tech-tags"><span>Prometheus</span><span>Grafana</span><span>Loki</span><span>Alertmanager</span></div>
+                        <div class="tech-tags"><span>Prometheus</span><span>Grafana</span><span>Loki</span><span>InfluxDB</span><span>Alertmanager</span></div>
                     </article>
                     <article class="service-card">
                         <span class="card-index">02 / IDENTITY</span>
@@ -227,22 +224,33 @@
                             <span class="card-index">04 / HOME + GAMES</span>
                             <h3>Useful, and fun</h3>
                             <p>Home automation and game workloads share the same lab with the infrastructure experiments.</p>
-                            <div class="tech-tags"><span>Home Assistant</span><span>Game servers</span></div>
+                            <div class="tech-tags"><span>Home Assistant</span><span>Terraria</span><span>RomM</span></div>
                         </div>
-                        <a class="game-art-frame" href="https://giphy.com/gifs/miyabi-zenless-zone-zero-aA2ttMzNeSETwRU6Cr" target="_blank" rel="noopener" aria-label="View Miyabi from Zenless Zone Zero on GIPHY">
-                            <img class="loop-gif" src="https://media3.giphy.com/media/aA2ttMzNeSETwRU6Cr/giphy.gif" alt="Miyabi from Zenless Zone Zero" />
+                        <a class="game-art-frame" href="https://giphy.com/gifs/zzz-miyabi-hoshimi-YbIyquzS05rfCoU9fi" target="_blank" rel="noopener" aria-label="View Miyabi from Zenless Zone Zero on GIPHY">
+                            <img class="loop-gif" src="https://media.giphy.com/media/YbIyquzS05rfCoU9fi/200w.gif" alt="Miyabi from Zenless Zone Zero" />
                         </a>
                     </article>
                     <article class="service-card game-card ai-card">
                         <div>
                             <span class="card-index">05 / LOCAL AI</span>
                             <h3>Models, on my own hardware</h3>
-                            <p>Local inference with llama.cpp, running Qwen 3.6 35B MTP MoE on the AI node.</p>
-                            <div class="tech-tags"><span>llama.cpp</span><span>Qwen 3.6</span><span>Tesla P40</span></div>
+                            <p>Self-hosted inference with llama.cpp on the AI node: Qwen 3.6 35B MTP MoE on a Tesla P40.</p>
                         </div>
-                        <a class="ai-art-frame" href="https://giphy.com/gifs/anime-pixel-kawaii-CWeTmIl86KpMPyyqtK" target="_blank" rel="noopener" aria-label="View anime pixel-art GIF on GIPHY">
-                            <img class="loop-gif" src="https://media3.giphy.com/media/CWeTmIl86KpMPyyqtK/giphy.gif" alt="Animated pixel-art anime character portrait" />
+                        <a class="ai-art-frame" href="https://giphy.com/gifs/HIDIVE-hidive-theeminenceinshadow-eminenceinshadow-PzMHYQJnuKbenMrXu9" target="_blank" rel="noopener" aria-label="View The Eminence in Shadow GIF on GIPHY">
+                            <img class="loop-gif" src="https://media.giphy.com/media/PzMHYQJnuKbenMrXu9/200w.gif" alt="Animated scene from The Eminence in Shadow" />
                         </a>
+                    </article>
+                    <article class="service-card">
+                        <span class="card-index">06 / DEV + CI</span>
+                        <h3>Repos that check themselves</h3>
+                        <p>Source hosting, static analysis and CI runners for everything I build.</p>
+                        <div class="tech-tags"><span>Gitea</span><span>SonarQube</span><span>Actions runner</span></div>
+                    </article>
+                    <article class="service-card">
+                        <span class="card-index">07 / AUTOMATION</span>
+                        <h3>Glue that runs itself</h3>
+                        <p>Workflow automation on top of a GitOps cluster taking over the app workloads.</p>
+                        <div class="tech-tags"><span>n8n</span><span>k3s</span><span>Argo CD</span><span>MetalLB</span></div>
                     </article>
                 </div>
             </section>
@@ -257,14 +265,14 @@
                 <p class="section-intro">A few improvements and experiments on my homelab backlog.</p>
                 <div class="issue-grid">
                     <article class="issue-card">
-                        <div class="issue-meta"><span>PLATFORM</span><b>OPEN</b></div>
-                        <h3>Plan the Kubernetes migration</h3>
-                        <p>Review the migration plan and right-size the workloads.</p>
+                        <div class="issue-meta"><span>PLATFORM</span><b>WIP</b></div>
+                        <h3>Migrate the lab to Kubernetes</h3>
+                        <p>Move lab workloads off standalone LXCs onto Kubernetes with a GitOps workflow, reusing the current VLAN scheme.</p>
                     </article>
                     <article class="issue-card">
-                        <div class="issue-meta"><span>NETWORKING</span><b>OPEN</b></div>
-                        <h3>Review network zones</h3>
-                        <p>Refine VLAN boundaries and move guests into their intended segments.</p>
+                        <div class="issue-meta"><span>NETWORKING</span><b>WIP</b></div>
+                        <h3>Segment the LAN into trust zones</h3>
+                        <p>Split the flat network into VLAN zones with guest isolation and a DMZ for exposed services.</p>
                     </article>
                     <article class="issue-card">
                         <div class="issue-meta"><span>LOCAL AI</span><b>OPEN</b></div>
