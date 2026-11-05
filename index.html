@@ -1683,7 +1683,7 @@
                 <!-- COMMAND BUTTONS -->
                 <div class="cmd-grid">
                     <template
-                        x-for="cmd in ['skills','projects','communities','videos','help']"
+                        x-for="cmd in ['skills','projects','homelab','communities','videos','help']"
                         :key="cmd"
                     >
                         <button
@@ -1708,6 +1708,8 @@
                         Technical &amp; soft skills<br />
                         <span style="color: var(--green)">projects</span> — My
                         projects<br />
+                        <span style="color: var(--green)">homelab</span> — My
+                        self-hosted lab<br />
                         <span style="color: var(--green)">communities</span> —
                         Communities &amp; organizations<br />
                         <span style="color: var(--green)">videos</span> — Talks
@@ -1715,6 +1717,24 @@
                         <span style="color: var(--green)">help</span> — Show
                         this list<br />
                     </div>
+                </div>
+
+                <!-- ─── HOMELAB ─── -->
+                <div
+                    class="output fade-enter"
+                    x-show="activeSection === 'homelab'"
+                >
+                    <div class="output-title rainbow-heading">
+                        # homelab // in progress
+                    </div>
+                    <div class="output-text">
+                        A small, evolving platform to learn infrastructure by
+                        building and operating real services.
+                    </div>
+                    <a class="project-row" href="./lab/">
+                        <span class="pname">Explore the lab</span>
+                        <span class="plink">Architecture, systems &amp; notes →</span>
+                    </a>
                 </div>
 
                 <!-- ─── SKILLS ─── -->
@@ -2082,6 +2102,7 @@
                         const valid = [
                             "skills",
                             "projects",
+                            "homelab",
                             "communities",
                             "videos",
                             "help",

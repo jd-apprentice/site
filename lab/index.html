@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="A visual tour of jd-apprentice's homelab: Proxmox, RouterOS, self-hosted services and operations."
+        />
+        <meta name="theme-color" content="#0a0015" />
+        <title>Homelab // jd-apprentice</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=VT323&family=Russo+One&family=Press+Start+2P&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./lab.css" />
+    </head>
+    <body>
+        <div class="starfield" aria-hidden="true"></div>
+        <header class="site-header wrap">
+            <a class="wordmark" href="../" aria-label="Back to portfolio">
+                <span class="prompt">jd-apprentice@portfolio:~$</span>
+                <span>cd /lab</span>
+            </a>
+            <nav aria-label="Homelab navigation">
+                <a href="#map">MAP</a>
+                <a href="#stack">STACK</a>
+            </nav>
+            <a class="back-link" href="../">← PORTFOLIO</a>
+        </header>
+
+        <main class="wrap">
+            <section class="hero" aria-labelledby="page-title">
+                <div class="hero-scene">
+                    <a class="hero-source" href="https://giphy.com/gifs/ova-black-rock-shooter-98dujYZyq4mOc" target="_blank" rel="noopener" aria-label="View Black Rock Shooter OVA GIF on GIPHY">
+                        <img class="hero-gif loop-gif" src="https://media2.giphy.com/media/98dujYZyq4mOc/giphy.gif" alt="Black Rock Shooter from the OVA" />
+                    </a>
+                    <div class="scene-shade" aria-hidden="true"></div>
+                    <div class="hero-copy">
+                        <p class="eyebrow"><span class="status-dot"></span> HOMELAB // FIELD NOTES</p>
+                        <h1 id="page-title">A small lab.<br /><span>Real systems.</span></h1>
+                        <p>
+                            A visual tour of the infrastructure I actually run:
+                            virtualized hosts, segmented networks, self-hosted
+                            services, and the operational glue between them.
+                        </p>
+                        <a class="scroll-cta" href="#map">$ explore_the_setup <span>↓</span></a>
+                    </div>
+                    <a class="anime-sticker" href="https://giphy.com/gifs/anime-happiness-happy-girl-smile-FEQltjYKsAzX2Uy9FC" target="_blank" rel="noopener" aria-label="View Wuthering Waves anime GIF on GIPHY">
+                        <img class="loop-gif" src="https://media2.giphy.com/media/FEQltjYKsAzX2Uy9FC/giphy.gif" alt="Animated Wuthering Waves anime character" />
+                    </a>
+                    <div class="scene-label">EST. IN A BEDROOM · ALWAYS A WORK IN PROGRESS</div>
+                </div>
+            </section>
+
+            <section class="snapshot" aria-label="Homelab snapshot">
+                <div class="snapshot-title"><span>//</span> CURRENT SNAPSHOT</div>
+                <div class="stat-grid">
+                    <article class="stat-card">
+                        <strong>04</strong>
+                        <span>online Proxmox nodes</span>
+                    </article>
+                    <article class="stat-card">
+                        <strong>38</strong>
+                        <span>guest records across the cluster</span>
+                    </article>
+                    <article class="stat-card">
+                        <strong>05</strong>
+                        <span>RouterOS network segments</span>
+                    </article>
+                    <article class="stat-card">
+                        <strong>05</strong>
+                        <span>scheduled backup jobs</span>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section-block" id="map" aria-labelledby="map-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">01 // THE ACTUAL SHAPE</p>
+                        <h2 id="map-title">How the pieces fit together</h2>
+                    </div>
+                </div>
+                <p class="section-intro">
+                    Re-drawn from the current Proxmox inventory, Ansible inventory,
+                    RouterOS VLAN config and networking notes.
+                </p>
+
+                <div class="map-window">
+                    <div class="window-bar">
+                        <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span>~/homelab/network-map.svg</span>
+                        <span class="window-status">LIVE SETUP OVERVIEW</span>
+                    </div>
+                    <div class="map-scroll">
+                        <svg class="network-map" viewBox="0 0 1200 720" role="img" aria-labelledby="diagram-title diagram-desc">
+                            <title id="diagram-title">Homelab network map</title>
+                            <desc id="diagram-desc">
+                                Cloudflare edge and tunnel lead to selected services on a three-node Proxmox cluster.
+                                A RouterOS gateway connects five logical network segments to the cluster. A separate
+                                backup server receives scheduled backups. A fourth Proxmox node runs the local AI lab.
+                            </desc>
+                            <defs>
+                                <marker id="arrow-cyan" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+                                    <path d="M0,0 L9,4.5 L0,9 z" fill="#00ddff" />
+                                </marker>
+                                <marker id="arrow-pink" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+                                    <path d="M0,0 L9,4.5 L0,9 z" fill="#ff69ff" />
+                                </marker>
+                            </defs>
+
+                            <!-- Public ingress path -->
+                            <text class="map-kicker" x="30" y="25">PUBLIC INGRESS</text>
+                            <path class="flow-line" d="M180 76 H220" marker-end="url(#arrow-cyan)" />
+                            <path class="flow-line" d="M430 76 H470" marker-end="url(#arrow-cyan)" />
+                            <path class="flow-line" d="M695 76 H735" marker-end="url(#arrow-cyan)" />
+                            <rect class="node node-public" x="30" y="43" width="150" height="66" rx="8" />
+                            <text class="node-title" x="105" y="72" text-anchor="middle">INTERNET</text>
+                            <text class="node-sub" x="105" y="94" text-anchor="middle">remote clients</text>
+                            <rect class="node node-edge" x="220" y="43" width="210" height="66" rx="8" />
+                            <text class="node-title" x="325" y="72" text-anchor="middle">CLOUDFLARE</text>
+                            <text class="node-sub" x="325" y="94" text-anchor="middle">WAF · DNS</text>
+                            <rect class="node node-tunnel" x="470" y="43" width="225" height="66" rx="8" />
+                            <text class="node-title" x="582" y="72" text-anchor="middle">REVERSE TUNNEL</text>
+                            <text class="node-sub" x="582" y="94" text-anchor="middle">cloudflared · LXC</text>
+                            <rect class="node node-public" x="735" y="43" width="220" height="66" rx="8" />
+                            <text class="node-title" x="845" y="72" text-anchor="middle">PUBLISHED APPS</text>
+                            <text class="node-sub" x="845" y="94" text-anchor="middle">self-hosted workloads</text>
+                            <path class="tunnel-link" d="M582 110 V145 H744 V382" marker-end="url(#arrow-pink)" />
+                            <text class="map-note" x="755" y="157">connector runs on PVE node B</text>
+
+                            <!-- Private / home network boundary -->
+                            <rect class="network-boundary" x="25" y="175" width="1150" height="515" rx="13" />
+                            <text class="boundary-title" x="48" y="207">PRIVATE NETWORK</text>
+
+                            <!-- Router and VLANs -->
+                            <path class="flow-line" d="M250 430 H292" marker-end="url(#arrow-cyan)" />
+                            <path class="flow-line" d="M520 430 H555" marker-end="url(#arrow-cyan)" />
+                            <rect class="node node-router" x="55" y="382" width="195" height="96" rx="8" />
+                            <text class="node-title" x="152" y="418" text-anchor="middle">ROUTEROS</text>
+                            <text class="node-sub" x="152" y="443" text-anchor="middle">gateway · firewall · DHCP</text>
+                            <text class="node-sub" x="152" y="463" text-anchor="middle">MikroTik</text>
+
+                            <rect class="group-box" x="292" y="250" width="228" height="345" rx="8" />
+                            <text class="group-title" x="310" y="279">5 VLAN SEGMENTS</text>
+                            <rect class="vlan" x="310" y="295" width="192" height="39" rx="4" />
+                            <text class="vlan-label" x="326" y="320">PRODUCTION</text>
+                            <rect class="vlan" x="310" y="345" width="192" height="39" rx="4" />
+                            <text class="vlan-label" x="326" y="370">TOOLS</text>
+                            <rect class="vlan" x="310" y="395" width="192" height="39" rx="4" />
+                            <text class="vlan-label" x="326" y="420">GUEST</text>
+                            <rect class="vlan" x="310" y="445" width="192" height="39" rx="4" />
+                            <text class="vlan-label" x="326" y="470">GAME HOSTING</text>
+                            <rect class="vlan vlan-restricted" x="310" y="495" width="192" height="39" rx="4" />
+                            <text class="vlan-label" x="326" y="520">RESTRICTED</text>
+                            <!-- Proxmox cluster and role-level placement -->
+                            <rect class="group-box cluster-box" x="555" y="230" width="390" height="430" rx="9" />
+                            <text class="group-title" x="575" y="260">PROXMOX VE CLUSTER</text>
+                            <text class="cluster-count" x="575" y="282">4 HOSTS · PROXMOX VE</text>
+                            <rect class="host-card" x="575" y="297" width="350" height="72" rx="6" />
+                            <text class="host-name" x="594" y="316">PVE NODE A</text>
+                            <text class="host-spec" x="594" y="339">Intel N95 · 4 cores · 15.4 GB RAM</text>
+                            <text class="host-role" x="594" y="360">core apps · identity · monitoring</text>
+                            <rect class="host-card" x="575" y="378" width="350" height="72" rx="6" />
+                            <text class="host-name" x="594" y="397">PVE NODE B</text>
+                            <text class="host-spec" x="594" y="420">Ryzen 3 3200U · 4 cores · 28.3 GB RAM</text>
+                            <text class="host-role" x="594" y="441">tunnel connector · utility workloads</text>
+                            <rect class="host-card" x="575" y="459" width="350" height="72" rx="6" />
+                            <text class="host-name" x="594" y="478">PVE NODE C</text>
+                            <text class="host-spec" x="594" y="501">Intel i7-6700T · 8 cores · 23.4 GB RAM</text>
+                            <text class="host-role" x="594" y="522">storage · home · game workloads</text>
+                            <rect class="host-card" x="575" y="539" width="350" height="115" rx="6" />
+                            <text class="host-name" x="594" y="558">PVE NODE D</text>
+                            <text class="host-spec" x="594" y="580">Ryzen 5 3400G · 4 cores · 16 GB DDR4</text>
+                            <text class="host-spec" x="594" y="600">Tesla P40 · llama.cpp · local inference</text>
+                            <text class="host-role" x="594" y="624">Qwen 3.6 35B MTP MoE</text>
+
+                            <!-- Backup path -->
+                            <path class="backup-line" d="M945 465 H970" marker-end="url(#arrow-cyan)" />
+                            <rect class="backup-card" x="970" y="382" width="170" height="117" rx="8" />
+                            <text class="node-title" x="1055" y="416" text-anchor="middle">PBS</text>
+                            <text class="node-sub" x="1055" y="442" text-anchor="middle">Proxmox Backup</text>
+                            <text class="node-sub" x="1055" y="464" text-anchor="middle">Server</text>
+                            <rect class="backup-jobs" x="970" y="520" width="170" height="73" rx="6" />
+                            <text class="vlan-label" x="1055" y="548" text-anchor="middle">5 SCHEDULED JOBS</text>
+                            <text class="node-sub" x="1055" y="574" text-anchor="middle">PBS + local targets</text>
+                        </svg>
+                    </div>
+                    <div class="map-legend">
+                        <span><i class="legend-cyan"></i>Configured / online path</span>
+                        <span><i class="legend-pink"></i>Private tunnel path</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-block" id="stack" aria-labelledby="stack-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">02 // WHAT'S RUNNING</p>
+                        <h2 id="stack-title">Services I actually use</h2>
+                    </div>
+                </div>
+                <div class="service-grid">
+                    <article class="service-card">
+                        <span class="card-index">01 / OBSERVABILITY</span>
+                        <h3>Know when things break</h3>
+                        <p>Metrics, dashboards, logs and alerting for the services I operate.</p>
+                        <div class="tech-tags"><span>Prometheus</span><span>Grafana</span><span>Loki</span><span>Alertmanager</span></div>
+                    </article>
+                    <article class="service-card">
+                        <span class="card-index">02 / IDENTITY</span>
+                        <h3>Access &amp; identity</h3>
+                        <p>Self-hosted identity and authentication components for selected apps.</p>
+                        <div class="tech-tags"><span>Keycloak</span><span>Authelia</span><span>LLDAP</span></div>
+                    </article>
+                    <article class="service-card">
+                        <span class="card-index">03 / STORAGE</span>
+                        <h3>Files &amp; recovery</h3>
+                        <p>Personal file services, network shares and a dedicated backup server.</p>
+                        <div class="tech-tags"><span>ownCloud</span><span>Samba</span><span>Proxmox Backup Server</span></div>
+                    </article>
+                    <article class="service-card game-card">
+                        <div>
+                            <span class="card-index">04 / HOME + GAMES</span>
+                            <h3>Useful, and fun</h3>
+                            <p>Home automation and game workloads share the same lab with the infrastructure experiments.</p>
+                            <div class="tech-tags"><span>Home Assistant</span><span>Game servers</span></div>
+                        </div>
+                        <a class="game-art-frame" href="https://giphy.com/gifs/miyabi-zenless-zone-zero-aA2ttMzNeSETwRU6Cr" target="_blank" rel="noopener" aria-label="View Miyabi from Zenless Zone Zero on GIPHY">
+                            <img class="loop-gif" src="https://media3.giphy.com/media/aA2ttMzNeSETwRU6Cr/giphy.gif" alt="Miyabi from Zenless Zone Zero" />
+                        </a>
+                    </article>
+                    <article class="service-card game-card ai-card">
+                        <div>
+                            <span class="card-index">05 / LOCAL AI</span>
+                            <h3>Models, on my own hardware</h3>
+                            <p>Local inference with llama.cpp, running Qwen 3.6 35B MTP MoE on the AI node.</p>
+                            <div class="tech-tags"><span>llama.cpp</span><span>Qwen 3.6</span><span>Tesla P40</span></div>
+                        </div>
+                        <a class="ai-art-frame" href="https://giphy.com/gifs/anime-pixel-kawaii-CWeTmIl86KpMPyyqtK" target="_blank" rel="noopener" aria-label="View anime pixel-art GIF on GIPHY">
+                            <img class="loop-gif" src="https://media3.giphy.com/media/CWeTmIl86KpMPyyqtK/giphy.gif" alt="Animated pixel-art anime character portrait" />
+                        </a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section-block progress" aria-labelledby="progress-title">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">03 // CURRENT WORK</p>
+                        <h2 id="progress-title">Things to work on</h2>
+                    </div>
+                    </div>
+                <p class="section-intro">A few improvements and experiments on my homelab backlog.</p>
+                <div class="issue-grid">
+                    <article class="issue-card">
+                        <div class="issue-meta"><span>PLATFORM</span><b>OPEN</b></div>
+                        <h3>Plan the Kubernetes migration</h3>
+                        <p>Review the migration plan and right-size the workloads.</p>
+                    </article>
+                    <article class="issue-card">
+                        <div class="issue-meta"><span>NETWORKING</span><b>OPEN</b></div>
+                        <h3>Review network zones</h3>
+                        <p>Refine VLAN boundaries and move guests into their intended segments.</p>
+                    </article>
+                    <article class="issue-card">
+                        <div class="issue-meta"><span>LOCAL AI</span><b>OPEN</b></div>
+                        <h3>Improve Tesla P40 cooling</h3>
+                        <p>Design a 3D enclosure and improve airflow for the GPU.</p>
+                    </article>
+                    <article class="issue-card">
+                        <div class="issue-meta"><span>HARDWARE</span><b>OPEN</b></div>
+                        <h3>Build a Raspberry Pi access point</h3>
+                        <p>Turn a Raspberry Pi 4B into a dedicated wireless access point.</p>
+                    </article>
+                    <article class="issue-card">
+                        <div class="issue-meta"><span>WIRELESS</span><b>OPEN</b></div>
+                        <h3>Investigate WPA3 support</h3>
+                        <p>Check WPA3 compatibility for the Raspberry Pi Zero 2 W.</p>
+                    </article>
+                    <article class="issue-card">
+                        <div class="issue-meta"><span>HARDWARE</span><b>OPEN</b></div>
+                        <h3>Build the homelab rack</h3>
+                        <p>Plan and assemble a rack for the lab hardware.</p>
+                    </article>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="wrap site-footer">
+            <span>jd-apprentice // homelab notes</span>
+            <a href="../">← BACK TO PORTFOLIO</a>
+        </footer>
+    </body>
+</html>
